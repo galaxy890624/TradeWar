@@ -1,0 +1,7 @@
+Name	Albedo_Texture	Albedo_Color	Metallic_Smoothness
+
+Armor	LowPolyArmorTexture	#ffffff	0.1
+Body		#825b46	0.1
+Eyes		#000000	0.1
+Hair		#2a243a	0.1
+Underware	#845e3d	0.1
