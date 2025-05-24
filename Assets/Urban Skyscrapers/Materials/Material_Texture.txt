@@ -1,0 +1,26 @@
+Name	Albedo_Texture	Color
+Material	-	#0a090b
+Material.001	city textures	#ffffff
+Material.002	t2	#ffffff
+Material.004	sinii zub	#ffffff
+Material.005	t3	#ffffff
+Material.006	-	#272c2b
+Material.007	-	#0c0a09
+Material.008	-	#0c282a
+Material.010	-	#0f1419
+Material.011	-	#29313a
+Material.012	-	#0c0c0c
+Material.013	-	#0c0c0c
+Material.014	-	#372929
+Material.015	-	#030304
+Material.016	-	#111819
+Material.017	-	#010306
+Material.018	-	#000000
+Material.019	ny3	#ffffff
+Material.020	c2	#ffffff
+Material.021	u001	#ffffff
+Material.022	-	#3c3642
+Material.023	-	#cccccc
+New Material	-	#5a6064
+water	-	#1b384f
+
