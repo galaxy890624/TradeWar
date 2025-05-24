@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da387f93a00a9640b5edcbd177d676e, type: 3}
   m_Name: ExpTable
   m_EditorClassIdentifier: 
-  MaxExp: []
+  MaxExp:
+  - 400
+  - 520
+  - 676
+  - 878
+  - 1142
