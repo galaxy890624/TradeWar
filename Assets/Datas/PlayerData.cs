@@ -18,8 +18,6 @@ public class PlayerData : ScriptableObject
     public int Money = 0;
     [Header("玩家持有的黃金數量")]
     public int Gold = 0;
-    [Header("玩家持有的小麥數量")]
-    public int Wheat = 0;
-    [Header("玩家持有的玉米數量")]
-    public int Corn = 0;
+    [Header("玩家持有的木材數量")]
+    public int Wood = 0;
 }

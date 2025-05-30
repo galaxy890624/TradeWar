@@ -31,9 +31,16 @@ public class MapManager : MonoBehaviour
 
     private void GenerateMap()
     {
+        // 如果已經有子物件就不再生成
+        if (transform.childCount > 0)
+        {
+            Debug.Log("<color=#ff00ff>[MapManager] 已有子物件, 跳過地圖生成</color>");
+            return;
+        }
+
         if (MapPrefab == null)
         {
-            Debug.LogWarning("MapPrefab 未指定，請在 Inspector 中拖入一個預製件！");
+            Debug.LogWarning("<color=#ff0000>MapPrefab 未指定, 請在 Inspector 中拖入一個預製件!</color>");
             return;
         }
 

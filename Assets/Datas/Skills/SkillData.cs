@@ -16,7 +16,7 @@ public class SkillData : ScriptableObject
     public Sprite SkillSprite;
     [Header("技能名稱")]
     public string SkillName;
-    [Header("技能等級"), Range(0, 500)]
+    [Header("技能等級"), Range(0, 20)]
     public int SkillLevel = 0;
     [Header("技能的能力值")]
     public float SkillValue = 0;
