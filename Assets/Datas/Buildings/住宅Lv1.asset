@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b558df0bd0221241a1164f7151f3898, type: 3}
   m_Name: "\u4F4F\u5B85Lv1"
   m_EditorClassIdentifier: 
-  BuildingName: "\u4F4F\u5B85Lv1"
-  BuildingPrefab: {fileID: 100000, guid: 35807f23e7899e541b60b2fb2bbb51ef, type: 3}
-  BuildingLevel: 1
-  RowIndex: 0
-  ColumnIndex: 0
-  BuildingDirection: {x: 0, y: 0, z: 0}
-  CostMoney: 4
-  CostGold: 0
-  CostWood: 1
+  category: 1
+  level: 1
+  displayName: "\u4F4F\u5B85Lv1"
+  prefab: {fileID: 0}
+  costMoney: 0
+  costWood: 0
+  costGold: 0

@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Money: 0
   Gold: 0
-  Wheat: 0
-  Corn: 0
+  Wood: 0

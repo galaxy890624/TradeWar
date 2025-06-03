@@ -1,0 +1,7 @@
+Canvas → 一個 Panel 靠右（垂直排版）
+
+ButtonPrefab（含圖、名、掛 BuildingButton 腳本）
+
+MapTile prefab 上要有 Collider + MapTile.cs
+
+BuildPlacer 掛在場景控制器中，指定 LayerMask 讓 Raycast 打到地格

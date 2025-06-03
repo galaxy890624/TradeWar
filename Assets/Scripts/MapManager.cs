@@ -55,6 +55,12 @@ public class MapManager : MonoBehaviour
                 GameObject tile = Instantiate(MapPrefab, position, Quaternion.identity, transform);
                 tile.name = $"Tile_{i}_{j}";
 
+                // 自動加上 MapTile 腳本（如果還沒加的話）
+                if (tile.GetComponent<MapTile>() == null)
+                {
+                    tile.AddComponent<MapTile>();
+                }
+
                 // 每格最多放一棵置中的樹
                 if (TreePrefabs.Count > 0 && Random.value < TreeSpawnProbability)
                 {
