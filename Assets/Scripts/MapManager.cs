@@ -59,7 +59,11 @@ public class MapManager : MonoBehaviour
                 if (tile.GetComponent<MapTile>() == null)
                 {
                     tile.AddComponent<MapTile>();
+                    // tile.layer = LayerMask.NameToLayer("Ground"); // 或 MapTile
                 }
+
+                // 設定 row/col
+                tile.GetComponent<MapTile>().Init(i, j);
 
                 // 每格最多放一棵置中的樹
                 if (TreePrefabs.Count > 0 && Random.value < TreeSpawnProbability)

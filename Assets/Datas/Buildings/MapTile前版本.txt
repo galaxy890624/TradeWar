@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// 每一個地圖格子使用的腳本 <br></br><br></br>
+/// 提供建造功能 Build()： <br></br>
+/// 判斷是否已被佔用 <br></br>
+/// 在此格生成建築 <br></br>
+/// 標記建築狀態 <br></br><br></br>
+/// 可以整合點擊交互、滑鼠高亮等功能
+/// </summary>
+public class MapTile : MonoBehaviour
+{
+    public bool IsOccupied = false;
+    public GameObject CurrentBuilding;
+
+    public bool Build(BuildingData data, float rotationY)
+    {
+        if (IsOccupied) return false;
+
+        Vector3 pos = transform.position + Vector3.up * 0.5f;
+        Quaternion rot = Quaternion.Euler(0, rotationY, 0);
+        GameObject building = Instantiate(data.prefab, pos, rot, transform);
+
+        CurrentBuilding = building;
+        IsOccupied = true;
+
+        return true;
+    }
+}

@@ -29,6 +29,11 @@ public class BuildingData : ScriptableObject
     public int costWood;
     public int costGold;
 
+    // 建築可佔多格（預設為1x1）
+    [Header("建築佔用空間")]
+    public int width = 1;  // 建築橫向佔用格數
+    public int height = 1; // 建築縱向佔用格數
+
     public string GetDisplayName()
     {
         return string.IsNullOrEmpty(displayName)

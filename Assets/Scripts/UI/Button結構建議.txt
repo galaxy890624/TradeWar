@@ -14,3 +14,18 @@ ButtonPrefab
 └── NameText (Text) → 顯示 BuildingData 名稱
 你需要在 BuildingButton.cs 中把這些欄位拉到 Inspector 內對應上。
 
+
+
+BuildPlacer（放置控制器）
+
+項目	說明
+物件名稱建議	GameManager 或 BuildController
+用途	控制滑鼠預覽、旋轉建築、點選放置
+腳本掛載	BuildPlacer.cs
+設定	在 Inspector 中指定：
+
+groundMask → 指向 Layer：Ground（或 MapTile）
+
+previewMaterial → 半透明材質（讓建築預覽有區別）
+
+系統會自動在滑鼠下產生預覽模型，並判斷你點擊的地格能否放建築。

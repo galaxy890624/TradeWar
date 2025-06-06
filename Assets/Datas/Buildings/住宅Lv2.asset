@@ -15,7 +15,10 @@ MonoBehaviour:
   category: 1
   level: 2
   displayName: "\u4F4F\u5B85Lv2"
-  prefab: {fileID: 0}
+  prefab: {fileID: 100000, guid: 22106dc63dce41746ad234a91af2d657, type: 3}
+  icon: {fileID: 0}
   costMoney: 0
   costWood: 0
   costGold: 0
+  width: 1
+  height: 1
