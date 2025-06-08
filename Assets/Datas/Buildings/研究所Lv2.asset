@@ -16,6 +16,9 @@ MonoBehaviour:
   level: 2
   displayName: "\u7814\u7A76\u6240Lv2"
   prefab: {fileID: 0}
+  icon: {fileID: 0}
   costMoney: 0
   costWood: 0
   costGold: 0
+  width: 3
+  height: 5

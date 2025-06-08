@@ -1,0 +1,11 @@
+腳本	掛在哪裡？	用途簡述
+BuildingMenuUI.cs	掛在 Canvas 上	控制建築按鈕生成與顯示
+BuildingButton.cs	掛在 ButtonPrefab 上	設定每個建築按鈕資料與點擊事件
+MapTile.cs	掛在 MapTile Prefab 上	控制建築建置與格子佔用狀態
+BuildPlacer.cs	掛在 GameManager 類物件上	控制放置流程（預覽、旋轉、確認建造）
+BuildingManager.cs	掛在 GameManager 或場景單例物件上	管理所有建築資料，供 UI 查詢與建造呼叫
+
+Bonus 建議：
+BuildPlacer.cs、BuildingManager.cs 可以放在同一個 GameManager 上
+UI 設定好後，可以將 ButtonPrefab 做成 Prefab 拖進 BuildingMenuUI 的欄位
+記得在 BuildingData 資料中填入 prefab、icon、名稱等資訊
