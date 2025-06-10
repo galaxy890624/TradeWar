@@ -59,7 +59,7 @@ public class MapManager : MonoBehaviour
                 if (tile.GetComponent<MapTile>() == null)
                 {
                     tile.AddComponent<MapTile>();
-                    // tile.layer = LayerMask.NameToLayer("Ground"); // 或 MapTile
+                    tile.layer = LayerMask.NameToLayer("Ground"); // 或 MapTile
                 }
 
                 // 設定 row/col

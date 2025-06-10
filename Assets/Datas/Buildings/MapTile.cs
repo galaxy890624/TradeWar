@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// 每一個地圖格子使用的腳本 <br></br><br></br>
@@ -80,5 +78,10 @@ public class MapTile : MonoBehaviour
     public void ResetColor()
     {
         SetColor(Color.white);
+    }
+
+    public void SetRiver()
+    {
+        // 將格子設為河流顏色（假設為藍色）
     }
 }
