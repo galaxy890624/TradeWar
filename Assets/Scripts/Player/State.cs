@@ -16,6 +16,10 @@ namespace galaxy890624
         protected StateMachine StateMachine; // 用來記錄狀態機實例
         protected float HorizontalInput; // 用來記錄水平輸入
         protected float VerticalInput; // 用來記錄垂直輸入
+        protected float MouseXInput; // 用來記錄滑鼠X軸輸入
+        protected float MouseYInput; // 用來記錄滑鼠Y軸輸入
+        protected float MouseYInputMax; // 用來記錄最大仰角 (ex: 90度)
+        protected float MouseYInputMin; // 用來記錄最小俯角 (ex: -90度)
 
         public State(string _StateName, Player _Player, StateMachine _StateMachine)
         {
