@@ -10,9 +10,9 @@ public class MapManager : MonoBehaviour
 {
     [Header("地圖格子設定")]
     [SerializeField] private GameObject MapPrefab;
-    [SerializeField, Range(1, 1000)] private int MapRowCount = 3;
-    [SerializeField, Range(1, 1000)] private int MapColumnCount = 4;
-    [SerializeField, Range(1f, 40f)] private float MapSpacing = 10.0f;
+    [SerializeField, Range(1, 1000)] public int MapRowCount = 3;
+    [SerializeField, Range(1, 1000)] public int MapColumnCount = 4;
+    [SerializeField, Range(1f, 40f)] public float MapSpacing = 10.0f;
 
     [Header("樹木設定")]
     [SerializeField] private List<GameObject> TreePrefabs = new();

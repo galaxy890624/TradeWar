@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 玩家資料
-/// fillName 新創建的檔案名稱
-/// menuName 右鍵的目錄名稱
+/// 玩家資料 <br><br></br></br>
+/// fillName 新創建的檔案名稱 <br></br>
+/// menuName 右鍵的目錄名稱 <br></br>
 /// </summary>
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Player Data/New Player Data")]
 public class PlayerData : ScriptableObject
