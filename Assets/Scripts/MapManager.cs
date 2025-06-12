@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 /// <summary>
 /// 在場景設計階段就生成地圖物件（支援置中排列與隨機一棵樹）
@@ -9,7 +11,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     [Header("地圖格子設定")]
-    [SerializeField] private GameObject MapPrefab;
+    [SerializeField] private GameObject MapPrefab; // 地圖格子預製件 (預設 : 草地)
     [SerializeField, Range(1, 1000)] public int MapRowCount = 3;
     [SerializeField, Range(1, 1000)] public int MapColumnCount = 4;
     [SerializeField, Range(1f, 40f)] public float MapSpacing = 10.0f;
@@ -17,6 +19,10 @@ public class MapManager : MonoBehaviour
     [Header("樹木設定")]
     [SerializeField] private List<GameObject> TreePrefabs = new();
     [SerializeField, Range(0f, 1f)] private float TreeSpawnProbability = 0.3f;
+
+    [Header("地圖塊上的物件資料來源")]
+    [SerializeField] public MapData MapData;
+
 
     private void OnValidate()
     {
@@ -64,6 +70,14 @@ public class MapManager : MonoBehaviour
 
                 // 設定 row/col
                 tile.GetComponent<MapTile>().Init(i, j);
+
+                // 查詢是否有設定物件 -> 放上去
+                GameObject prefab = MapData.GetTileObject(i, j);
+                if (prefab != null)
+                {
+                    GameObject content = Instantiate(prefab, position, Quaternion.identity, tile.transform);
+                    content.name = $"Obj_{i}_{j}";
+                }
 
                 // 每格最多放一棵置中的樹
                 if (TreePrefabs.Count > 0 && Random.value < TreeSpawnProbability)

@@ -10,9 +10,9 @@ using UnityEngine;
 public class MapData : ScriptableObject
 {
     [Header("Map Tile Rows")]
-    [SerializeField, Range(0, 1000)] public int Rows = 0;
+    [SerializeField, Range(0, 1000)] public int Rows;
     [Header("Map Tile Cols")]
-    [SerializeField, Range(0, 1000)] public int Cols = 0;
+    [SerializeField, Range(0, 1000)] public int Cols;
     [Header("地圖塊物件的間隔")]
     [SerializeField, Range(0f, 20f)] public float MapSpacing = 10.0f;
     [Header("地圖物件列表")]
@@ -22,11 +22,11 @@ public class MapData : ScriptableObject
     [SerializeField] public GameObject[] MapInfo;
 
     /// <summary>
-    /// 獲取指定位置的物件
+    /// 獲取指定位置的物件 <br></br>
     /// </summary>
-    /// <param name="row">行索引 (0-based)</param>
-    /// <param name="col">列索引 (0-based)</param>
-    /// <returns>該位置的GameObject，如果為空則返回null</returns>
+    /// <param name="row">行索引 (0-based) <br></br></param>
+    /// <param name="col">列索引 (0-based) <br></br></param>
+    /// <returns>該位置的GameObject，如果為空則返回null <br></br></returns>
     public GameObject GetTileObject(int row, int col)
     {
         if (!IsValidPosition(row, col))
@@ -40,12 +40,12 @@ public class MapData : ScriptableObject
     }
 
     /// <summary>
-    /// 設置指定位置的物件
+    /// 設置指定位置的物件 <br></br>
     /// </summary>
-    /// <param name="row">行索引 (0-based)</param>
-    /// <param name="col">列索引 (0-based)</param>
-    /// <param name="gameObject">要放置的GameObject</param>
-    /// <returns>是否設置成功</returns>
+    /// <param name="row">行索引 (0-based) <br></br></param>
+    /// <param name="col">列索引 (0-based) <br></br></param>
+    /// <param name="gameObject">要放置的GameObject <br></br></param>
+    /// <returns>是否設置成功 <br></br></returns>
     public bool SetTileObject(int row, int col, GameObject gameObject)
     {
         if (!IsValidPosition(row, col))
