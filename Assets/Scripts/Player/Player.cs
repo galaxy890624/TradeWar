@@ -16,12 +16,6 @@ namespace galaxy890624
         [field: SerializeField, Range(0f, 10f)] public float MoveSpeed { get; private set; } = 5f; // 玩家移動速度
         [field: Header("玩家跳躍設定")]
         [field: SerializeField, Range(0f, 10f)] public float JumpForce { get; private set; } = 5f; // 玩家跳躍力量
-        [field: Header("滑鼠靈敏度設定")]
-        [field: SerializeField, Range(1f, 5f)] public float MouseSensitivity = 3f;
-        [field: Header("水平旋轉軸")]
-        [field: SerializeField] public Transform HorizontalRotationAxis; // 水平旋轉軸 (通常是玩家的頭部)
-        [field: Header("垂直旋轉軸")]
-        [field: SerializeField] public Transform VerticalRotationAxis; // 垂直旋轉軸 (通常是玩家的眼睛)
 
         public Animator Animator { get; private set; } // 玩家動畫控制器
         public Rigidbody Rigidbody { get; private set; } // 玩家物理引擎
@@ -87,11 +81,6 @@ namespace galaxy890624
         public void SetVelocity(Vector3 Velocity)
         {
             Rigidbody.velocity = Velocity;
-        }
-
-        public void SetRotation(Quaternion Rotation)
-        {
-            Rigidbody.rotation = Rotation;
         }
         public bool IsGrounded()
         {

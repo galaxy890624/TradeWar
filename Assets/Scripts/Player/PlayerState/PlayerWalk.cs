@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 namespace galaxy890624
@@ -36,9 +37,6 @@ namespace galaxy890624
                 // 切換狀態到 PlayerIdle
                 StateMachine.SwitchState(Player.PlayerIdle);
             }
-
-            // 滑鼠旋轉
-            // Player.SetRotation(new Quaternion.Euler(MouseYInput, MouseXInput, 0f));
         }
     }
 
