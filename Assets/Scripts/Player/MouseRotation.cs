@@ -1,48 +1,48 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace galaxy890624
 {
     /// <summary>
-    /// ·Æ¹«±ÛÂà±±¨î <br></br>
-    /// ¥Î¨Ó±±¨îª±®aªºµø¨¤±ÛÂà <br></br>
+    /// æ»‘é¼ æ—‹è½‰æ§åˆ¶ <br></br>
+    /// ç”¨ä¾†æ§åˆ¶ç©å®¶çš„è¦–è§’æ—‹è½‰ <br></br>
     /// </summary>
     public class MouseRotation : MonoBehaviour
     {
         float MouseXInput = 0f;
         float MouseYInput = 0f;
 
-        [Header("¤ô¥­±ÛÂàµø½u (³q±`¬Oª±®aªºÀY³¡)")]
+        [Header("æ°´å¹³æ—‹è½‰è¦–ç·š (é€šå¸¸æ˜¯ç©å®¶çš„é ­éƒ¨)")]
         [SerializeField] Transform HorizontalRotationAxis = null;
-        [Header("««ª½±ÛÂàµø½u (³q±`¬Oª±®aªº²´·ú)")]
+        [Header("å‚ç›´æ—‹è½‰è¦–ç·š (é€šå¸¸æ˜¯ç©å®¶çš„çœ¼ç›)")]
         [SerializeField] Transform VerticalRotationAxis = null;
-        [Header("·Æ¹«ÆF±Ó«×³]©w")]
-        [SerializeField, Range(1f, 5f)] public float MouseSensitivity = 3f; // ·Æ¹«ÆF±Ó«×³]©w
-        [Header("¥õ¨¤³]©w")]
-        [SerializeField, Range(-90f, 0f)] public float MinYAngle = -90f; // ³Ì¤p¥õ¨¤
-        [SerializeField, Range(0f, 90f)] public float MaxYAngle = 90f; // ³Ì¤j¥õ¨¤
+        [Header("æ»‘é¼ éˆæ•åº¦è¨­å®š")]
+        [SerializeField, Range(1f, 5f)] public float MouseSensitivity = 3f; // æ»‘é¼ éˆæ•åº¦è¨­å®š
+        [Header("ä»°è§’è¨­å®š")]
+        [SerializeField, Range(-90f, 0f)] public float MinYAngle = -90f; // æœ€å°ä»°è§’
+        [SerializeField, Range(0f, 90f)] public float MaxYAngle = 90f; // æœ€å¤§ä»°è§’
 
 
         private void Update()
         {
-            // ¥u¦³¦b¹CÀ¸¤¤¤~¯à±ÛÂà
+            // åªæœ‰åœ¨éŠæˆ²ä¸­æ‰èƒ½æ—‹è½‰
             MouseXInput = MouseXInput + (Input.GetAxis("Mouse X") * MouseSensitivity);
             MouseYInput = MouseYInput + (Input.GetAxis("Mouse Y") * -1f * MouseSensitivity);
             
-            // ­­¨îYªº¤W¤U¨¤«×
-            MouseYInput = Mathf.Clamp(MouseYInput, MinYAngle, MaxYAngle);
+            // é™åˆ¶Yçš„ä¸Šä¸‹è§’åº¦
+            MouseYInput = Mathf.Clamp(MouseYInput, -MaxYAngle, -MinYAngle);
 
-            // §âXYZÂà´«¦¨±ÛÂà¶q
+            // æŠŠXYZè½‰æ›æˆæ—‹è½‰é‡
 
-            // ¤ô¥­±ÛÂà¶q
+            // æ°´å¹³æ—‹è½‰é‡
             Quaternion HorizontalRotation = Quaternion.Euler(0f, MouseXInput, 0f);
-            // §ó´« ¤ô¥­±ÛÂàµø½u ªº ±ÛÂà­È
+            // æ›´æ› æ°´å¹³æ—‹è½‰è¦–ç·š çš„ æ—‹è½‰å€¼
             HorizontalRotationAxis.localRotation = HorizontalRotation;
 
-            // ««ª½±ÛÂà¶q
+            // å‚ç›´æ—‹è½‰é‡
             Quaternion VerticalRotation = Quaternion.Euler(MouseYInput, 0f, 0f);
-            // §ó´« ««ª½±ÛÂàµø½u ªº ±ÛÂà­È
+            // æ›´æ› å‚ç›´æ—‹è½‰è¦–ç·š çš„ æ—‹è½‰å€¼
             VerticalRotationAxis.localRotation = VerticalRotation;
         }
     }
