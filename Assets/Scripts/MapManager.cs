@@ -16,10 +16,6 @@ public class MapManager : MonoBehaviour
     [SerializeField, Range(1, 1000)] public int MapColumnCount = 4;
     [SerializeField, Range(1f, 40f)] public float MapSpacing = 10.0f;
 
-    [Header("樹木設定")]
-    [SerializeField] private List<GameObject> TreePrefabs = new();
-    [SerializeField, Range(0f, 1f)] private float TreeSpawnProbability = 0.3f;
-
     [Header("地圖塊上的物件資料來源")]
     [SerializeField] public MapData MapData;
 
@@ -62,6 +58,7 @@ public class MapManager : MonoBehaviour
                 tile.name = $"Tile_{i}_{j}";
 
                 // 自動加上 MapTile 腳本（如果還沒加的話）
+                // 再把每一個地圖塊 圖層 指定為 Ground
                 if (tile.GetComponent<MapTile>() == null)
                 {
                     tile.AddComponent<MapTile>();
@@ -77,14 +74,6 @@ public class MapManager : MonoBehaviour
                 {
                     GameObject content = Instantiate(prefab, position, Quaternion.identity, tile.transform);
                     content.name = $"Obj_{i}_{j}";
-                }
-
-                // 每格最多放一棵置中的樹
-                if (TreePrefabs.Count > 0 && Random.value < TreeSpawnProbability)
-                {
-                    GameObject treePrefab = TreePrefabs[Random.Range(0, TreePrefabs.Count)];
-                    Vector3 treePos = position;
-                    GameObject tree = Instantiate(treePrefab, treePos, Quaternion.identity, tile.transform);
                 }
 
                 Debug.Log($"<color=#ff00ff>生成 Tile：</color><color=#00ff00>({i}, {j}) → {position}</color>");
