@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4408962758739718658}
   - component: {fileID: 4121315371551231236}
   - component: {fileID: 8963792717191206766}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: water location christmas village_10m_10m
   m_TagString: Untagged
   m_Icon: {fileID: 0}

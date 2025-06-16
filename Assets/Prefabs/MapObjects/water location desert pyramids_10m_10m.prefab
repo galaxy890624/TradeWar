@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3981049757450200943}
   - component: {fileID: 2983522759727506100}
   - component: {fileID: 514590854826693026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: water location desert pyramids_10m_10m
   m_TagString: Untagged
   m_Icon: {fileID: 0}

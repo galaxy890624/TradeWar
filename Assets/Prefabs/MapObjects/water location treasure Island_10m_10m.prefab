@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7441258185459602547}
   - component: {fileID: 6375224403597331013}
   - component: {fileID: 3907335229132180640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: water location treasure Island_10m_10m
   m_TagString: Untagged
   m_Icon: {fileID: 0}

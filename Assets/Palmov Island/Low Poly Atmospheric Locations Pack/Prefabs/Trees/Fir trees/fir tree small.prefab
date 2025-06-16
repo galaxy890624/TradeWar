@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 484723370201073685}
   - component: {fileID: 2404607876740594911}
   - component: {fileID: 3037316096587682109}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fir tree small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,8 +92,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4205832566711065866}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 2.0101845, y: 3.9707253, z: 2.0237968}
   m_Center: {x: -0.027423233, y: 1.9853626, z: -0.026988983}

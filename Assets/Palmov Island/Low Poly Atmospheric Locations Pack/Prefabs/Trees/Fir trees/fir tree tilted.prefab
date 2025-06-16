@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 499767121683191937}
   - component: {fileID: 2381120821357210699}
   - component: {fileID: 8705590334721968443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fir tree tilted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,8 +92,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4182591389083094430}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 4.465926, y: 8.301303, z: 4.309767}
   m_Center: {x: -0.056885123, y: 4.1506515, z: -0.05475223}

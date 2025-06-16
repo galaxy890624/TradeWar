@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3836269659138847372}
   - component: {fileID: 2072977954953551255}
   - component: {fileID: 1416722753516246249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: water location camping forest_10m_10m
   m_TagString: Untagged
   m_Icon: {fileID: 0}

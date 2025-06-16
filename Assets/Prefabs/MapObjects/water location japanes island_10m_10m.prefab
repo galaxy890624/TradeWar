@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7588085108864183999}
   - component: {fileID: 8984835594600117023}
   - component: {fileID: 8561032278779052188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: water location japanes island_10m_10m
   m_TagString: Untagged
   m_Icon: {fileID: 0}
