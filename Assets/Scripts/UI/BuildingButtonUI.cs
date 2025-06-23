@@ -9,6 +9,8 @@ namespace galaxy890624
     /// </summary>
     public class BuildingButtonUI : MonoBehaviour
     {
+        [Header("BuildingData ªº ScriptableObj")]
+        [SerializeField] private BuildingData BuildingData;
         [Header("UI ¤¸¥ó")]
         [SerializeField] private Image iconImage;
         [SerializeField] private TMP_Text nameText;
