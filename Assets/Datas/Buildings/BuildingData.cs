@@ -24,6 +24,9 @@ public class BuildingData : ScriptableObject
     public GameObject prefab;
     public Sprite icon;
 
+    [Header("升級資料")]
+    public BuildingData nextLevelData; // Lv 1 -> Lv2, Lv2 -> Lv3, ... , Lv Max -> null;
+
     [Header("建造成本")]
     public int costMoney;
     public int costWood;

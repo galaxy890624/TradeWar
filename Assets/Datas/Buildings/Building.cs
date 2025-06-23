@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using galaxy890624;
+
 /// <summary>
 /// 附加在實體建築上，用來記錄這個建築屬於哪一筆 BuildingData <br></br>
-/// 可用來做動畫、升級邏輯、產出等擴充行為
+/// 可用來做動畫、升級邏輯、產出等擴充行為 <br></br>
 /// </summary>
 public class Building : MonoBehaviour
 {

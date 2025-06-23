@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using galaxy890624;
 
 public class BuildingMenuUI : MonoBehaviour
 {

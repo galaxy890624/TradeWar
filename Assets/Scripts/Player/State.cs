@@ -30,7 +30,7 @@ namespace galaxy890624
         /// </summary>
         public virtual void Enter() // virtual 代表這個方法可以被子類別覆寫
         {
-            Debug.Log($"<color=#ff00ff>進入 <color=#00ff00><{StateName}></color> 狀態</color>");
+            //Debug.Log($"<color=#ff00ff>進入 <color=#00ff00><{StateName}></color> 狀態</color>");
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace galaxy890624
         /// </summary>
         public virtual void Update() 
         {
-            Debug.Log($"<color=#ff00ff>更新 <color=#00ff00><{StateName}></color> 狀態</color>");
+            //Debug.Log($"<color=#ff00ff>更新 <color=#00ff00><{StateName}></color> 狀態</color>");
             HorizontalInput = Input.GetAxis("Horizontal"); // 獲取水平輸入
             VerticalInput = Input.GetAxis("Vertical"); // 獲取垂直輸入
         }
@@ -48,7 +48,7 @@ namespace galaxy890624
         /// </summary>
         public virtual void Exit() 
         {
-            Debug.Log($"<color=#ff00ff>離開 <color=#00ff00><{StateName}></color> 狀態</color>");
+            //Debug.Log($"<color=#ff00ff>離開 <color=#00ff00><{StateName}></color> 狀態</color>");
         }
     }
 

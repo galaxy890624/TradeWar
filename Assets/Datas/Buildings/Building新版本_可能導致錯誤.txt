@@ -1,0 +1,111 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using galaxy890624;
+
+/// <summary>
+/// 實體建築物，用來記錄建築放在哪裡、佔用了哪些格子、目前等級等
+/// </summary>
+public class Building : MonoBehaviour
+{
+    // 建築資料
+    private BuildingData data;
+
+    // 建築佔用的格子們
+    public List<MapTile> occupiedTiles = new();
+
+    // 建築放置位置（左上角的 tile 座標）
+    public int leftTopRow;
+    public int leftTopCol;
+
+    // 寬高（單位：tile 數量）
+    public int width;
+    public int height;
+
+    /// <summary>
+    /// 初始化建築資料（建造時呼叫）
+    /// </summary>
+    public void SetData(BuildingData buildingData)
+    {
+        data = buildingData;
+        width = data.width;
+        height = data.height;
+
+        gameObject.name = $"{data.category}_Lv{data.level}";
+    }
+
+    /// <summary>
+    /// 取得建築使用的建築資料
+    /// </summary>
+    public BuildingData GetData()
+    {
+        return data;
+    }
+
+    /// <summary>
+    /// 取得建築佔用的所有地圖座標
+    /// </summary>
+    public List<Vector2Int> GetOccupiedPositions()
+    {
+        List<Vector2Int> positions = new();
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                positions.Add(new Vector2Int(leftTopRow + i, leftTopCol + j));
+            }
+        }
+        return positions;
+    }
+
+    /// <summary>
+    /// 拆除建築：釋放格子 → 移除自己
+    /// </summary>
+    public void DestroySelf()
+    {
+        foreach (MapTile tile in occupiedTiles)
+        {
+            tile.IsOccupied = false;
+            tile.CurrentBuilding = null;
+        }
+
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// 嘗試升級建築（可擴充條件限制）
+    /// </summary>
+    public void TryUpgrade()
+    {
+        // 
+        if (data.nextLevelData == null)
+        {
+            Debug.LogWarning("已達最大等級，無法升級");
+            return;
+        }
+
+        // 可擴充資源檢查、科技限制等
+        // TODO: check player resource
+
+        // 升級：卸除目前建築 → 替換為新建築
+        Vector3 pos = transform.position;
+        Quaternion rot = transform.rotation;
+
+        GameObject newBuildingGO = Instantiate(data.nextLevelData.prefab, pos, rot);
+        Building newBuilding = newBuildingGO.GetComponent<Building>();
+
+        newBuilding.SetData(data.nextLevelData);
+        newBuilding.occupiedTiles = this.occupiedTiles;
+        newBuilding.leftTopRow = this.leftTopRow;
+        newBuilding.leftTopCol = this.leftTopCol;
+
+        // 替換 tile 的指向
+        foreach (MapTile tile in occupiedTiles)
+        {
+            tile.CurrentBuilding = newBuilding.gameObject;
+        }
+
+        Destroy(gameObject);
+    }
+}
