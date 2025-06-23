@@ -24,7 +24,7 @@ namespace galaxy890624
         public void Initialize(BuildingData data)
         {
             buildingData = data;
-
+            // 建築分類 與 等級 的文字
             nameText.text = $"<color=#ff00ff>{data.category} <color=#00ff00>Lv{data.level}</color></color>";
             descText.text = $"<color=#ff00ff>花費：<color=#00ff00>{data.costMoney}</color>，大小：<color=#00ff00>{data.width}×{data.height}</color></color>";
 
