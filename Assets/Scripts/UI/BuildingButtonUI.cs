@@ -14,7 +14,7 @@ namespace galaxy890624
         [Header("UI 元件")]
         [SerializeField] private Image iconImage;
         [SerializeField] private TMP_Text nameText;
-        [SerializeField] private TMP_Text descText;
+        [SerializeField] private TMP_Text descText; // 升級建築描述文字
 
         private BuildingData buildingData;
 
@@ -25,11 +25,10 @@ namespace galaxy890624
         {
             buildingData = data;
 
-            nameText.text = $"{data.category} Lv{data.level}";
-            descText.text = $"花費：{data.costMoney}，大小：{data.width}×{data.height}";
+            nameText.text = $"<color=#ff00ff>{data.category} <color=#00ff00>Lv{data.level}</color></color>";
+            descText.text = $"<color=#ff00ff>花費：<color=#00ff00>{data.costMoney}</color>，大小：<color=#00ff00>{data.width}×{data.height}</color></color>";
 
-            if (data.icon != null)
-                iconImage.sprite = data.icon;
+            if (data.icon != null) iconImage.sprite = data.icon;
         }
 
         /// <summary>

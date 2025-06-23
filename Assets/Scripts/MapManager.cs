@@ -26,7 +26,6 @@ public class MapManager : MonoBehaviour
 
         if (!Application.isPlaying)
         {
-            ClearMap();       // 清空原有地圖
             GenerateMap();    // 重新生成
         }
     }
@@ -78,14 +77,6 @@ public class MapManager : MonoBehaviour
 
                 Debug.Log($"<color=#ff00ff>生成 Tile：</color><color=#00ff00>({i}, {j}) → {position}</color>");
             }
-        }
-    }
-
-    private void ClearMap()
-    {
-        for (int i = transform.childCount - 1; i >= 0; i--)
-        {
-            DestroyImmediate(transform.GetChild(i).gameObject);
         }
     }
 }
