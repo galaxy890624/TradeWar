@@ -23,7 +23,7 @@ namespace galaxy890624
         {
             base.Exit();
         }
-
+        
         public override void Update()
         {
             base.Update();
@@ -38,6 +38,38 @@ namespace galaxy890624
                 StateMachine.SwitchState(Player.PlayerIdle);
             }
         }
+
+        /*
+        public override void Update()
+        {
+            base.Update();
+
+            // 取得輸入
+            Vector3 input = new Vector3(HorizontalInput, 0, VerticalInput);
+
+            // 取得主攝影機的 Y 軸朝向
+            Transform cam = Camera.main.transform;
+            Vector3 camForward = Vector3.Scale(cam.forward, new Vector3(1, 0, 1)).normalized;
+            Vector3 camRight = cam.right;
+
+            // 依照攝影機方向計算移動向量
+            Vector3 move = (camForward * input.z + camRight * input.x).normalized;
+
+            // 設定速度
+            Player.SetVelocity(new Vector3(move.x, Player.Rigidbody.velocity.y, move.z) * Player.MoveSpeed);
+
+            // 玩家面向移動方向（可選）
+            if (move.magnitude > 0.1f)
+            {
+                Player.transform.forward = move;
+            }
+
+            // 狀態切換
+            if (HorizontalInput == 0 && VerticalInput == 0)
+            {
+                StateMachine.SwitchState(Player.PlayerIdle);
+            }
+        }*/
     }
 
 }
