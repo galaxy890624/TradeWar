@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace galaxy890624
@@ -81,6 +82,16 @@ namespace galaxy890624
         public void SetVelocity(Vector3 Velocity)
         {
             Rigidbody.velocity = Velocity;
+        }
+
+        /// <summary>
+        /// 設定玩家的移動方向 <br></br>
+        /// 當視角左右旋轉的時候, 獲得transform的Z值, 來改變人物移動的方向
+        /// </summary>
+        /// <param name="Direction">視窗的Z值</param>
+        public void SetDirection(Quaternion Direction)
+        {
+            transform.rotation = Direction;
         }
         public bool IsGrounded()
         {
