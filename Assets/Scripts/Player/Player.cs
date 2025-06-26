@@ -86,9 +86,9 @@ namespace galaxy890624
 
         /// <summary>
         /// 設定玩家的移動方向 <br></br>
-        /// 當視角左右旋轉的時候, 獲得transform的Z值, 來改變人物移動的方向
+        /// 當視角左右旋轉的時候, 獲得transform的旋轉的Y值, 來改變人物移動的方向
         /// </summary>
-        /// <param name="Direction">視窗的Z值</param>
+        /// <param name="Direction">旋轉的Y值</param>
         public void SetDirection(Quaternion Direction)
         {
             transform.rotation = Direction;
