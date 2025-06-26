@@ -18,6 +18,12 @@ namespace galaxy890624
         [field: Header("玩家跳躍設定")]
         [field: SerializeField, Range(0f, 10f)] public float JumpForce { get; private set; } = 5f; // 玩家跳躍力量
 
+        [Header("自己的方向")]
+        Quaternion Direction;
+
+        [Header("玩家面向的方向")]
+        [SerializeField] Transform PlayerFace;
+
         public Animator Animator { get; private set; } // 玩家動畫控制器
         public Rigidbody Rigidbody { get; private set; } // 玩家物理引擎
         [Header("地板判定")]
