@@ -21,8 +21,18 @@ namespace galaxy890624
         [Header("自己的方向")]
         Quaternion Direction;
 
+        /// <summary>
+        /// 要求玩家面向某個方向 <br></br>
+        /// </summary>
         [Header("玩家面向的方向")]
         [SerializeField] Transform PlayerFace;
+
+        [Header("確保玩家對齊方向")]
+        /// <summary>要求我對齊我的母物件 <br></br></summary>
+        public bool IsAlign = false;
+
+        [Header("對齊速度")]
+        [SerializeField] float AlignSpeed = 10f;
 
         public Animator Animator { get; private set; } // 玩家動畫控制器
         public Rigidbody Rigidbody { get; private set; } // 玩家物理引擎
@@ -71,6 +81,9 @@ namespace galaxy890624
 
             // 在一開始時 將 狀態機 指定 預設狀態 為 待機
             StateMachine.DefaultState(PlayerIdle);
+
+            // 初始化的時候記住自己的方向
+            Direction = this.transform.rotation;
         }
 
         /// <summary>
@@ -79,6 +92,9 @@ namespace galaxy890624
         private void Update()
         {
             StateMachine.UpdateState();
+
+            if (IsAlign) Direction = Quaternion.Lerp(Direction, PlayerFace.rotation, AlignSpeed);
+            this.transform.rotation = Direction;
         }
 
         /// <summary>
