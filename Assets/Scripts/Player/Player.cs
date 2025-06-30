@@ -23,6 +23,7 @@ namespace galaxy890624
 
         /// <summary>
         /// 要求玩家面向某個方向 <br></br>
+        /// 根據參照物來決定自身移動方向 <br></br>
         /// </summary>
         [Header("玩家面向的方向")]
         [SerializeField] Transform PlayerFace;
