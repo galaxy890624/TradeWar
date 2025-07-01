@@ -105,6 +105,7 @@ namespace galaxy890624
         public void SetVelocity(Vector3 Velocity)
         {
             Rigidbody.velocity = Velocity;
+            Debug.Log($"<color=#ff00ff>Rigidbody.velocity = <color=#00ff00>{Velocity}</color></color>");
         }
 
         /// <summary>

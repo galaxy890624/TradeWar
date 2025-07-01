@@ -30,7 +30,8 @@ namespace galaxy890624
             base.Update();
 
             // 設定玩家的加速度
-            Player.SetVelocity( new Vector3( HorizontalInput, Player.Rigidbody.velocity.y, VerticalInput ) * Player.MoveSpeed );
+            // Player.Rigidbody.velocity.y 和 面板上的 gravity 會同時作用, 造成y座標迅速掉到-Infinity
+            Player.SetVelocity( new Vector3( HorizontalInput, 0f, VerticalInput ) * Player.MoveSpeed );
 
             // 如果玩家沒有水平或垂直輸入, 則切換到待機狀態
             if (HorizontalInput == 0 && VerticalInput == 0)
