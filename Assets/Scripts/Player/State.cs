@@ -17,6 +17,7 @@ namespace galaxy890624
 
         protected float HorizontalInput; // 用來記錄水平輸入
         protected float VerticalInput; // 用來記錄垂直輸入
+        protected Vector3 Movement; // 記錄玩家的輸入
         protected Vector3 MaxInput; // 讓速度輸入大小固定
 
         public State(string _StateName, Player _Player, StateMachine _StateMachine)
@@ -42,8 +43,9 @@ namespace galaxy890624
             //Debug.Log($"<color=#ff00ff>更新 <color=#00ff00><{StateName}></color> 狀態</color>");
             HorizontalInput = Input.GetAxis("Horizontal"); // 獲取水平輸入
             VerticalInput = Input.GetAxis("Vertical"); // 獲取垂直輸入
+            Movement = new Vector3 (HorizontalInput, 0f, VerticalInput);
             // 移動向量
-            // MaxInput = 
+            MaxInput = Vector3.ClampMagnitude(Movement, 1f); // 大小固定為1
             //Debug.Log($"<color=#ff00ff>HorizontalInput = <color=#00ff00>{HorizontalInput}</color>, VerticalInput = <color=#00ff00>{VerticalInput}</color></color>"); // 功能正常
         }
 
