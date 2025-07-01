@@ -33,6 +33,10 @@ namespace galaxy890624
             // Player.Rigidbody.velocity.y 和 面板上的 gravity 會同時作用, 造成y座標迅速掉到-Infinity
             Player.SetVelocity( MaxInput * Player.MoveSpeed );
 
+            // 設定玩家的動畫
+            Player.Animator.SetFloat("HorizontalDirection", HorizontalInput);
+            Player.Animator.SetFloat("VerticalDirection", VerticalInput);
+
             // 如果玩家沒有水平或垂直輸入, 則切換到待機狀態
             if (HorizontalInput == 0 && VerticalInput == 0)
             {
