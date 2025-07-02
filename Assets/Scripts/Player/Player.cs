@@ -96,6 +96,13 @@ namespace galaxy890624
 
             if (IsAlign) Direction = Quaternion.Lerp(Direction, PlayerFace.rotation, AlignSpeed);
             this.transform.rotation = Direction;
+
+            // 如果 在地板上 並且 按下空白鍵 就往上跳 (剛體的加速度)
+            if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+            {
+                Rigidbody.velocity = new Vector3(0f, JumpForce, 0f);
+                Debug.Log("<color=#ff0000>玩家跳躍!</color>");
+            }
         }
 
         /// <summary>
@@ -105,7 +112,7 @@ namespace galaxy890624
         public void SetVelocity(Vector3 Velocity)
         {
             Rigidbody.velocity = Velocity;
-            Debug.Log($"<color=#ff00ff>Rigidbody.velocity = <color=#00ff00>{Velocity}</color></color>");
+            //Debug.Log($"<color=#ff00ff>Rigidbody.velocity = <color=#00ff00>{Velocity}</color></color>");
         }
 
         /// <summary>
