@@ -35,6 +35,7 @@ namespace galaxy890624{
             {
                 // 切換到跳躍狀態
                 StateMachine.SwitchState(Player.PlayerJump);
+                Debug.Log("<color=#0f7fff>[PlayerGround.cs]<color=#ff0000>玩家切換到跳躍狀態!</color></color>");
             }
         }
     }
