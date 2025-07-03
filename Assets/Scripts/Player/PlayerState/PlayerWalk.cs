@@ -18,6 +18,7 @@ namespace galaxy890624
         public override void Enter()
         {
             base.Enter();
+            Debug.Log("<color=#0f7fff>State -> <color=#ff7f00>PlayerWalk</color></color>");
         }
 
         public override void Exit()
@@ -43,6 +44,7 @@ namespace galaxy890624
                 // 切換狀態到 PlayerIdle
                 StateMachine.SwitchState(Player.PlayerIdle);
             }
+
         }
     }
 

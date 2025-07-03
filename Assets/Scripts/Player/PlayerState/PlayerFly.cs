@@ -13,6 +13,22 @@ namespace galaxy890624
         public PlayerFly(string _StateName, Player _Player, StateMachine _StateMachine) : base(_StateName, _Player, _StateMachine)
         {
         }
+
+        public override void Enter()
+        {
+            base.Enter();
+            Debug.Log("<color=#0f7fff>State -> <color=#ff7f00>PlayerFly</color></color>");
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+        }
+
+        public override void Update()
+        {
+            base.Update();
+        }
     }
 
 }

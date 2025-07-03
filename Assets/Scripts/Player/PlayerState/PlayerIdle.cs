@@ -19,6 +19,7 @@ namespace galaxy890624
         public override void Enter()
         {
             base.Enter();
+            Debug.Log("<color=#0f7fff>State -> <color=#ff7f00>PlayerIdle</color></color>");
         }
 
         public override void Exit()
@@ -29,12 +30,24 @@ namespace galaxy890624
         public override void Update()
         {
             base.Update();
+
+            // 如果 不能移動 就跳出 Update()
+            //if (!Player.CanMove) return;
+
             // 如果玩家有水平或垂直輸入, 則切換到移動狀態
             if (HorizontalInput != 0 || VerticalInput != 0)
             {
                 // 切換狀態到 PlayerWalk
                 StateMachine.SwitchState(Player.PlayerWalk);
             }
+
+            // 如果 在地板上 並且 按下空白鍵 就往上跳 (剛體的加速度)
+            if (Player.IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+            {
+                Player.Rigidbody.velocity = new Vector3(0f, Player.JumpForce, 0f);
+                Debug.Log("<color=#ff0000>玩家跳躍!</color>");
+            }
+
         }
     }
 

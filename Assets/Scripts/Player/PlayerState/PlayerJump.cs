@@ -17,6 +17,7 @@ namespace galaxy890624
         public override void Enter()
         {
             base.Enter();
+            Debug.Log("<color=#0f7fff>State -> <color=#ff7f00>PlayerJump</color></color>");
             Player.SetVelocity(Player.Rigidbody.velocity + new Vector3(0f, Player.JumpForce, 0f)); // 設定玩家的跳躍速度
             Player.Animator.SetBool("IsGrounded", false);
             Player.Animator.SetFloat("Gravity", 1f);

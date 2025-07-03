@@ -35,8 +35,24 @@ namespace galaxy890624
         [Header("對齊速度")]
         [SerializeField] float AlignSpeed = 10f;
 
-        public Animator Animator { get; private set; } // 玩家動畫控制器
-        public Rigidbody Rigidbody { get; private set; } // 玩家物理引擎
+        /// <summary>
+        /// 玩家動畫控制器 <br></br>
+        /// </summary>
+        public Animator Animator { get; private set; }
+        /// <summary>
+        /// 玩家物理引擎 <br></br>
+        /// </summary>
+        public Rigidbody Rigidbody { get; private set; }
+
+        /// <summary>
+        /// 玩家是否可以移動 <br></br>
+        /// </summary>
+        public bool CanMove { get; set; } = false;
+        /// <summary>
+        /// 玩家是否可以跳躍 <br></br>
+        /// </summary>
+        public bool CanJump { get; set; } = false;
+
         [Header("地板判定")]
         [SerializeField] Vector3 GroundCheckOffset = new Vector3(0f, -0.1f, 0f); // 地板判定偏移量
         [SerializeField] private float GroundCheckRadius = 0.1f; // 地板判定半徑
@@ -85,6 +101,9 @@ namespace galaxy890624
 
             // 初始化的時候記住自己的方向
             Direction = this.transform.rotation;
+
+            // 遊戲一開始時測試用 : 可以控制
+            TestCanControl();
         }
 
         /// <summary>
@@ -98,11 +117,7 @@ namespace galaxy890624
             this.transform.rotation = Direction;
 
             // 如果 在地板上 並且 按下空白鍵 就往上跳 (剛體的加速度)
-            if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
-            {
-                Rigidbody.velocity = new Vector3(0f, JumpForce, 0f);
-                Debug.Log("<color=#ff0000>玩家跳躍!</color>");
-            }
+            // if (IsGrounded && Input.GetKeyDown(KeyCode.Space)) Rigidbody.velocity = new Vector3(0f, JumpForce, 0f);
         }
 
         /// <summary>
@@ -128,6 +143,15 @@ namespace galaxy890624
         {
             // 檢查玩家是否接觸地面
             return Physics.CheckSphere(transform.position + GroundCheckOffset, GroundCheckRadius, GroundLayer);
+        }
+
+        /// <summary>
+        /// 測試 : 可以控制 移動, 跳躍<br></br>
+        /// </summary>
+        private void TestCanControl()
+        {
+            CanMove = true;
+            CanJump = true;
         }
     }
 
