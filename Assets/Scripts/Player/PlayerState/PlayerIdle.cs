@@ -34,6 +34,7 @@ namespace galaxy890624
             // 如果 不能移動 就跳出 Update()
             //if (!Player.CanMove) return;
 
+            // PlayerIdle -> PlayerWalk
             // 如果玩家有水平或垂直輸入, 則切換到移動狀態
             if (HorizontalInput != 0 || VerticalInput != 0)
             {
@@ -41,11 +42,12 @@ namespace galaxy890624
                 StateMachine.SwitchState(Player.PlayerWalk);
             }
 
+            // PlayerIdle -> PlayerJump
             // 如果 在地板上 並且 按下空白鍵 就往上跳 (剛體的加速度)
             if (Player.IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             {
                 Player.Rigidbody.velocity = new Vector3(0f, Player.JumpForce, 0f);
-                Debug.Log("<color=#ff0000>玩家跳躍!</color>");
+                Debug.Log("<color=#ff0000>PlayerIdle -> PlayerJump</color>");
             }
 
         }

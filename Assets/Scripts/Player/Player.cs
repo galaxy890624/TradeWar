@@ -103,6 +103,8 @@ namespace galaxy890624
             Direction = this.transform.rotation;
 
             // 遊戲一開始時測試用 : 可以控制
+            Debug.Log($"<color=#ff00ff>[Player.cs]CanMove = <color=#00ff00>{CanMove}</color></color>");
+            Debug.Log($"<color=#ff00ff>[Player.cs]CanJump = <color=#00ff00>{CanJump}</color></color>");
             TestCanControl();
         }
 
@@ -117,7 +119,7 @@ namespace galaxy890624
             this.transform.rotation = Direction;
 
             // 如果 在地板上 並且 按下空白鍵 就往上跳 (剛體的加速度)
-            // if (IsGrounded && Input.GetKeyDown(KeyCode.Space)) Rigidbody.velocity = new Vector3(0f, JumpForce, 0f);
+            if (CanJump && Input.GetKeyDown(KeyCode.Space)) Rigidbody.velocity = new Vector3(0f, JumpForce, 0f);
         }
 
         /// <summary>
@@ -152,6 +154,8 @@ namespace galaxy890624
         {
             CanMove = true;
             CanJump = true;
+            Debug.Log($"<color=#ff00ff>[Player.cs]CanMove = <color=#00ff00>{CanMove}</color></color>");
+            Debug.Log($"<color=#ff00ff>[Player.cs]CanJump = <color=#00ff00>{CanJump}</color></color>");
         }
     }
 

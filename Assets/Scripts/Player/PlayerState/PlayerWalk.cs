@@ -38,11 +38,20 @@ namespace galaxy890624
             Player.Animator.SetFloat("HorizontalDirection", HorizontalInput);
             Player.Animator.SetFloat("VerticalDirection", VerticalInput);
 
+            // PlayerWalk -> PlayerIdle
             // 如果玩家沒有水平或垂直輸入, 則切換到待機狀態
             if (HorizontalInput == 0 && VerticalInput == 0)
             {
                 // 切換狀態到 PlayerIdle
                 StateMachine.SwitchState(Player.PlayerIdle);
+            }
+
+            // PlayerWalk -> PlayerJump
+            // 如果 在地板上 並且 按下空白鍵 就往上跳 (剛體的加速度)
+            if (Player.IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+            {
+                Player.Rigidbody.velocity = new Vector3(0f, Player.JumpForce, 0f);
+                Debug.Log("<color=#ff0000> PlayerWalk -> PlayerJump</color>");
             }
 
         }

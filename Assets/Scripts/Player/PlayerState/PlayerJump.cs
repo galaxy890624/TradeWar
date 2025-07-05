@@ -37,7 +37,7 @@ namespace galaxy890624
             Player.Animator.SetFloat("HorizontalDirection", HorizontalInput);
             Player.Animator.SetFloat("VerticalDirection", VerticalInput);
 
-
+            // PlayerJump -> PlayerFall
             // 如果 剛體的速度小於等於0, 就切換到落下狀態
             if (Player.Rigidbody.velocity.y <= 0f) StateMachine.SwitchState(Player.PlayerFall);
         }
