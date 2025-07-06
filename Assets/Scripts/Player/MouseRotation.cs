@@ -41,7 +41,7 @@ namespace galaxy890624
             HorizontalRotationAxis.localRotation = HorizontalRotation;
 
             // 垂直旋轉量
-            Quaternion VerticalRotation = Quaternion.Euler(MouseYInput, 0f, 0f);
+            Quaternion VerticalRotation = Quaternion.Euler(MouseYInput, MouseXInput, 0f);
             // 更換 垂直旋轉視線 的 旋轉值
             VerticalRotationAxis.localRotation = VerticalRotation;
         }

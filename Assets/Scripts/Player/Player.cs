@@ -119,7 +119,7 @@ namespace galaxy890624
             this.transform.rotation = Direction;
 
             // 如果 在地板上 並且 按下空白鍵 就往上跳 (剛體的加速度)
-            if (CanJump && Input.GetKeyDown(KeyCode.Space)) Rigidbody.velocity = new Vector3(0f, JumpForce, 0f);
+            //if (CanJump && Input.GetKeyDown(KeyCode.Space)) Rigidbody.velocity = new Vector3(0f, JumpForce, 0f);
         }
 
         /// <summary>
@@ -141,6 +141,11 @@ namespace galaxy890624
         {
             transform.rotation = Direction;
         }
+        /// <summary>
+        /// 檢查 GameObject-玩家 是否碰到 Layer-Ground <br></br>
+        /// 必須把地板群組的Layer 設定為 Ground
+        /// </summary>
+        /// <returns></returns>
         public bool IsGrounded()
         {
             // 檢查玩家是否接觸地面
@@ -158,5 +163,5 @@ namespace galaxy890624
             Debug.Log($"<color=#ff00ff>[Player.cs]CanJump = <color=#00ff00>{CanJump}</color></color>");
         }
     }
-
+    // Ch 08 - 刪除ControlSystem.cs
 }

@@ -7,7 +7,7 @@ namespace galaxy890624
     /// <summary>
     /// 玩家待機狀態 <br></br>
     /// </summary>
-    public class PlayerIdle : State
+    public class PlayerIdle : PlayerGround
     {
         public PlayerIdle(string _StateName, Player _Player, StateMachine _StateMachine) : base(_StateName, _Player, _StateMachine)
         {
@@ -19,7 +19,7 @@ namespace galaxy890624
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("<color=#0f7fff>State -> <color=#ff7f00>PlayerIdle</color></color>");
+            Debug.Log("<color=#0f7fff><color=#ff00ff>[PlayerIdle.cs]</color> State -> <color=#ff7f00>PlayerIdle</color></color>");
         }
 
         public override void Exit()
@@ -41,15 +41,6 @@ namespace galaxy890624
                 // 切換狀態到 PlayerWalk
                 StateMachine.SwitchState(Player.PlayerWalk);
             }
-
-            // PlayerIdle -> PlayerJump
-            // 如果 在地板上 並且 按下空白鍵 就往上跳 (剛體的加速度)
-            if (Player.IsGrounded() && Input.GetKeyDown(KeyCode.Space))
-            {
-                Player.Rigidbody.velocity = new Vector3(0f, Player.JumpForce, 0f);
-                Debug.Log("<color=#ff0000>PlayerIdle -> PlayerJump</color>");
-            }
-
         }
     }
 

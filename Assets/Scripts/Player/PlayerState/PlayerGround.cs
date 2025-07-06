@@ -20,7 +20,7 @@ namespace galaxy890624{
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("<color=#0f7fff>State -> <color=#ff7f00>PlayerGround</color></color>");
+            Debug.Log("<color=#0f7fff><color=#ff00ff>[PlayerGround.cs]</color> State -> <color=#ff7f00>PlayerGround</color></color>");
         }
 
         public override void Exit()
@@ -36,7 +36,7 @@ namespace galaxy890624{
             {
                 // 切換到跳躍狀態
                 StateMachine.SwitchState(Player.PlayerJump);
-                Debug.Log("<color=#0f7fff>[PlayerGround.cs]<color=#ff0000>玩家切換到跳躍狀態!</color></color>");
+                Debug.Log("<color=#0f7fff>[PlayerGround.cs] <color=#ff0000>玩家切換到跳躍狀態!</color></color>");
             }
         }
     }

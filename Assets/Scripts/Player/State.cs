@@ -46,7 +46,7 @@ namespace galaxy890624
             Movement = new Vector3 (HorizontalInput, 0f, VerticalInput);
             // 移動向量
             MaxInput = Vector3.ClampMagnitude(Movement, 1f); // 大小固定為1
-            //Debug.Log($"<color=#ff00ff>HorizontalInput = <color=#00ff00>{HorizontalInput}</color>, VerticalInput = <color=#00ff00>{VerticalInput}</color></color>");
+            //Debug.Log($"<color=#ff00ff>[State.cs] HorizontalInput = <color=#00ff00>{HorizontalInput}</color>, VerticalInput = <color=#00ff00>{VerticalInput}</color></color>");
         }
 
         /// <summary>

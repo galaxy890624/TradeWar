@@ -22,7 +22,7 @@ public class MapManager : MonoBehaviour
 
     private void OnValidate()
     {
-        Debug.Log("<color=#ff00ff>[MapManager] OnValidate 被執行</color>");
+        Debug.Log("<color=#ff00ff>[MapManager.cs] OnValidate 被執行</color>");
 
         if (!Application.isPlaying)
         {
@@ -35,13 +35,13 @@ public class MapManager : MonoBehaviour
         // 如果已經有子物件就不再生成
         if (transform.childCount > 0)
         {
-            Debug.Log("<color=#ff00ff>[MapManager] 已有子物件, 跳過地圖生成</color>");
+            Debug.Log("<color=#ff00ff>[MapManager.cs] 已有子物件, 跳過地圖生成</color>");
             return;
         }
 
         if (MapPrefab == null)
         {
-            Debug.LogWarning("<color=#ff0000>MapPrefab 未指定, 請在 Inspector 中拖入一個預製件!</color>");
+            Debug.LogWarning("<color=#ff0000>[MapManager.cs] MapPrefab 未指定, 請在 Inspector 中拖入一個預製件!</color>");
             return;
         }
 
@@ -75,7 +75,7 @@ public class MapManager : MonoBehaviour
                     content.name = $"Obj_{i}_{j}";
                 }
 
-                Debug.Log($"<color=#ff00ff>生成 Tile：</color><color=#00ff00>({i}, {j}) → {position}</color>");
+                Debug.Log($"<color=#ff00ff>[MapManager.cs] 生成 Tile：</color><color=#00ff00>({i}, {j}) → {position}</color>");
             }
         }
     }
