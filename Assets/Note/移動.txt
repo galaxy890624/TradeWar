@@ -1,1 +1,9 @@
 應該往 攝影機 的前方 移動
+*攝影機不會轉動,但是眼睛會
+
+// 往上看 -> Rotation.x -
+// 往下看 -> Rotation.x +
+// 往左看 -> Rotation.y -
+// 往右看 -> Rotation.y +
+// 往前看 -> Rotation.y = 0
+// 往後看 -> Rotation.y = 180

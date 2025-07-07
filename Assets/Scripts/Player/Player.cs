@@ -35,6 +35,9 @@ namespace galaxy890624
         [Header("對齊速度")]
         [SerializeField] float AlignSpeed = 10f;
 
+        [Header("玩家的Virtual Camera (通常用水平旋轉軸)")]
+        [SerializeField] public Transform VirtualCameraTransform;
+
         /// <summary>
         /// 玩家動畫控制器 <br></br>
         /// </summary>

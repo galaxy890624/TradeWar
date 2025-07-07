@@ -17,8 +17,8 @@ namespace galaxy890624
 
         protected float HorizontalInput; // 用來記錄水平輸入
         protected float VerticalInput; // 用來記錄垂直輸入
-        protected Vector3 Movement; // 記錄玩家的輸入
-        protected Vector3 MaxInput; // 讓速度輸入大小固定
+        protected Vector3 Movement; // 記錄玩家輸入的方向
+        protected Vector3 MaxInput; // 讓輸入的方向的大小固定為1
 
         public State(string _StateName, Player _Player, StateMachine _StateMachine)
         {
