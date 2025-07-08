@@ -10,8 +10,8 @@ namespace galaxy890624
     /// </summary>
     public class MouseRotation : MonoBehaviour
     {
-        float MouseXInput = 0f;
-        float MouseYInput = 0f;
+        public float MouseXInput = 0f;
+        public float MouseYInput = 0f;
 
         [Header("水平旋轉視線 (通常是玩家的頭部)")]
         [SerializeField] Transform HorizontalRotationAxis = null;
@@ -41,7 +41,7 @@ namespace galaxy890624
             HorizontalRotationAxis.localRotation = HorizontalRotation;
 
             // 垂直旋轉量
-            Quaternion VerticalRotation = Quaternion.Euler(MouseYInput, MouseXInput, 0f);
+            Quaternion VerticalRotation = Quaternion.Euler(MouseYInput, MouseXInput, 0f); // Quaternion.Euler(MouseYInput, 0f, 0f) 會把水平值蓋掉
             // 更換 垂直旋轉視線 的 旋轉值
             VerticalRotationAxis.localRotation = VerticalRotation;
         }

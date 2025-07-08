@@ -38,6 +38,9 @@ namespace galaxy890624
         [Header("玩家的Virtual Camera (通常用水平旋轉軸)")]
         [SerializeField] public Transform VirtualCameraTransform;
 
+        [Header("滑鼠控制器")]
+        [SerializeField] public MouseRotation MouseRotation;
+
         /// <summary>
         /// 玩家動畫控制器 <br></br>
         /// </summary>
@@ -121,8 +124,12 @@ namespace galaxy890624
             if (IsAlign) Direction = Quaternion.Lerp(Direction, PlayerFace.rotation, AlignSpeed);
             this.transform.rotation = Direction;
 
-            // 如果 在地板上 並且 按下空白鍵 就往上跳 (剛體的加速度)
-            //if (CanJump && Input.GetKeyDown(KeyCode.Space)) Rigidbody.velocity = new Vector3(0f, JumpForce, 0f);
+            // 讓玩家的模型 和 水平旋轉軸 一起旋轉
+            // = Player.transform.rotation
+            // this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, MouseRotation.MouseXInput, this.transform.rotation.z); // NullReferenceException
+
+            // 目前Player的Rotation不會動, 眼睛的會動
+            Debug.Log($"<color=#ff00ff>[Player.cs] Player.transform.rotation = ( <color=#00ff00>{this.transform.rotation.x}, {this.transform.rotation.y}, {this.transform.rotation.z}</color> )</color>");
         }
 
         /// <summary>

@@ -12,6 +12,8 @@ namespace galaxy890624
     /// </summary>
     public class PlayerWalk : PlayerGround
     {
+        // 滑鼠控制玩家的視角
+        public MouseRotation MouseRotation;
         public PlayerWalk(string _StateName, Player _Player, StateMachine _StateMachine) : base(_StateName, _Player, _StateMachine)
         {
         }
@@ -33,7 +35,10 @@ namespace galaxy890624
             base.Update();
 
             // 取得 Virtual Camera Transform
-            Transform VirtualCameraTransform = Player.VirtualCameraTransform;
+            Transform VirtualCameraTransform = Player.VirtualCameraTransform; // Player.cs
+
+            // 人物模型也要跟著視角旋轉
+            // VirtualCameraTransform.rotation.y = MouseRotation.MouseXInput;
 
             // 取得Virtual Camera的 forward/right 方向, 忽略y軸
             Vector3 CameraForward = VirtualCameraTransform.forward;
