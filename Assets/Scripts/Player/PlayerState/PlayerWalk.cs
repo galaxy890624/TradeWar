@@ -65,8 +65,8 @@ namespace galaxy890624
             // 讓玩家面向相機的 forward 方向
             if (CameraForward.sqrMagnitude > 0.01f)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(CameraForward);
-                Player.transform.rotation = Quaternion.Slerp(Player.transform.rotation, targetRotation, Time.deltaTime * 10f);
+                Quaternion TargetRotation = Quaternion.LookRotation(CameraForward);
+                Player.PlayerVisual.rotation = Quaternion.Slerp(Player.PlayerVisual.rotation, TargetRotation, Time.deltaTime * 10f);
             }
 
             // 設定玩家的動畫

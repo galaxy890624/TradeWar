@@ -41,6 +41,12 @@ namespace galaxy890624
         [Header("滑鼠控制器")]
         [SerializeField] public MouseRotation MouseRotation;
 
+        [Header("玩家視覺模型(Armature)")]
+        [SerializeField] public Transform PlayerVisual;
+
+        [Header("玩家視覺模型的節點")]
+        [SerializeField] private Transform PlayerVisualRoot;
+
         /// <summary>
         /// 玩家動畫控制器 <br></br>
         /// </summary>
@@ -112,6 +118,9 @@ namespace galaxy890624
             Debug.Log($"<color=#ff00ff>[Player.cs]CanMove = <color=#00ff00>{CanMove}</color></color>");
             Debug.Log($"<color=#ff00ff>[Player.cs]CanJump = <color=#00ff00>{CanJump}</color></color>");
             TestCanControl();
+
+            // 初始化的時候 就自動尋找節點
+            if (PlayerVisualRoot == null) PlayerVisualRoot = transform.Find("Armature");
         }
 
         /// <summary>
@@ -129,7 +138,10 @@ namespace galaxy890624
 
             // 目前Player的Rotation不會動, 眼睛的會動
             // 這裡顯示的是Quaternion, 不是Quaternion.Euler
-            Debug.Log($"<color=#ff00ff>[Player.cs] Player.transform.rotation = ( <color=#00ff00>{this.transform.rotation.x}, {this.transform.rotation.y}, {this.transform.rotation.z}</color> )</color>");
+            // Debug.Log($"<color=#ff00ff>[Player.cs] Player.transform.rotation = ( <color=#00ff00>{this.transform.rotation.x}, {this.transform.rotation.y}, {this.transform.rotation.z}</color> )</color>");
+
+            // 測試 PlayerVisual 是否真的有被轉動, 這裡顯示的是 Quaternion.Euler
+            Debug.Log($"<color=#ff00ff>[PlayerWalk] PlayerVisual.rotation.eulerAngles = <color=#00ff00>{PlayerVisual.rotation.eulerAngles}</color></color>");
         }
 
         /// <summary>
@@ -173,5 +185,4 @@ namespace galaxy890624
             Debug.Log($"<color=#ff00ff>[Player.cs]CanJump = <color=#00ff00>{CanJump}</color></color>");
         }
     }
-    // Ch 08 - 刪除ControlSystem.cs
 }
