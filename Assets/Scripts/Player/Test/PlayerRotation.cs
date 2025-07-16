@@ -2,12 +2,12 @@
 
 public class PlayerRotation : MonoBehaviour
 {
-    public float sensitivity = 2.0f;
-    public float minPitch = -45.0f;
-    public float maxPitch = 45.0f;
-    public Transform target; // 玩家角色
+    public float Sensitivity = 2.0f;
+    public float MinPitch = -90.0f;
+    public float MaxPitch = 90.0f;
+    public Transform Target; // 玩家角色
 
-    private float pitch = 0.0f;
+    private float Pitch = 0.0f;
 
     void Start()
     {
@@ -16,16 +16,16 @@ public class PlayerRotation : MonoBehaviour
 
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        float MouseX = Input.GetAxis("Mouse X");
+        float MouseY = Input.GetAxis("Mouse Y");
 
-        // 左右旋转
-        transform.Rotate(Vector3.up, mouseX * sensitivity);
+        // 左右旋轉
+        transform.Rotate(Vector3.up, MouseX * Sensitivity);
 
-        // 上下旋转
-        pitch -= mouseY * sensitivity;
-        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
-        target.localEulerAngles = new Vector3(pitch, 0, 0); // 调整相机角度，绕X轴旋转
+        // 上下旋轉
+        Pitch -= MouseY * Sensitivity;
+        Pitch = Mathf.Clamp(Pitch, MinPitch, MaxPitch);
+        Target.localEulerAngles = new Vector3(Pitch, 0f, 0f); // 調整相機角度,繞x軸旋轉
     }
 
     void OnDisable()
