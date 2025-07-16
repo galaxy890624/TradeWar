@@ -45,7 +45,7 @@ namespace galaxy890624
         [SerializeField] public Transform PlayerVisual;
 
         [Header("玩家視覺模型的節點")]
-        [SerializeField] private Transform PlayerVisualRoot;
+        [SerializeField] public Transform PlayerVisualRoot;
 
         /// <summary>
         /// 玩家動畫控制器 <br></br>

@@ -66,7 +66,7 @@ namespace galaxy890624
             if (CameraForward.sqrMagnitude > 0.01f)
             {
                 Quaternion TargetRotation = Quaternion.LookRotation(CameraForward);
-                Player.PlayerVisual.rotation = Quaternion.Slerp(Player.PlayerVisual.rotation, TargetRotation, Time.deltaTime * 10f);
+                Player.PlayerVisualRoot.rotation = Quaternion.Slerp(Player.PlayerVisualRoot.rotation, TargetRotation, Time.deltaTime * 10f);
             }
 
             // 設定玩家的動畫
