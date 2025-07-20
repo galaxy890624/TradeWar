@@ -18,28 +18,8 @@ namespace galaxy890624
         [field: Header("玩家跳躍設定")]
         [field: SerializeField, Range(0f, 10f)] public float JumpForce { get; private set; } = 5f; // 玩家跳躍力量
 
-        [Header("自己的方向")]
-        Quaternion Direction;
-
-        /// <summary>
-        /// 要求玩家面向某個方向 <br></br>
-        /// 根據參照物來決定自身移動方向 <br></br>
-        /// </summary>
-        [Header("玩家面向的方向")]
-        [SerializeField] Transform PlayerFace;
-
-        [Header("確保玩家對齊方向")]
-        /// <summary>要求我對齊我的母物件 <br></br></summary>
-        public bool IsAlign = false;
-
-        [Header("對齊速度")]
-        [SerializeField] float AlignSpeed = 10f;
-
         [Header("玩家的Virtual Camera (通常用水平旋轉軸)")]
         [SerializeField] public Transform VirtualCameraTransform;
-
-        [Header("滑鼠控制器")]
-        [SerializeField] public MouseRotation MouseRotation;
 
         [Header("玩家視覺模型(Armature)")]
         [SerializeField] public Transform PlayerVisual;
@@ -111,9 +91,6 @@ namespace galaxy890624
             // 在一開始時 將 狀態機 指定 預設狀態 為 待機
             StateMachine.DefaultState(PlayerIdle);
 
-            // 初始化的時候記住自己的方向
-            Direction = this.transform.rotation;
-
             // 遊戲一開始時測試用 : 可以控制
             Debug.Log($"<color=#ff00ff>[Player.cs]CanMove = <color=#00ff00>{CanMove}</color></color>");
             Debug.Log($"<color=#ff00ff>[Player.cs]CanJump = <color=#00ff00>{CanJump}</color></color>");
@@ -134,7 +111,7 @@ namespace galaxy890624
             //this.transform.rotation = Direction;
 
             // 讓玩家移動的方向 和 滑鼠轉動的視角 一致
-            this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, MouseRotation.MouseXInput, this.transform.rotation.z); // = Player.transform.rotation
+            // this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, MouseRotation.MouseXInput, this.transform.rotation.z); // = Player.transform.rotation
 
             // 目前Player的Rotation不會動, 眼睛的會動
             // 這裡顯示的是Quaternion, 不是Quaternion.Euler
