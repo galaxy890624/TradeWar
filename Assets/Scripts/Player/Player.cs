@@ -107,18 +107,8 @@ namespace galaxy890624
         {
             StateMachine.UpdateState();
 
-            //if (IsAlign) Direction = Quaternion.Lerp(Direction, PlayerFace.rotation, AlignSpeed);
-            //this.transform.rotation = Direction;
-
-            // 讓玩家移動的方向 和 滑鼠轉動的視角 一致
-            // this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, MouseRotation.MouseXInput, this.transform.rotation.z); // = Player.transform.rotation
-
-            // 目前Player的Rotation不會動, 眼睛的會動
-            // 這裡顯示的是Quaternion, 不是Quaternion.Euler
-            // Debug.Log($"<color=#ff00ff>[Player.cs] Player.transform.rotation = ( <color=#00ff00>{this.transform.rotation.x}, {this.transform.rotation.y}, {this.transform.rotation.z}</color> )</color>");
-
             // 測試 PlayerVisual 是否真的有被轉動, 這裡顯示的是 Quaternion.Euler
-            Debug.Log($"<color=#ff00ff>[PlayerWalk] PlayerVisual.rotation.eulerAngles = <color=#00ff00>{PlayerVisual.rotation.eulerAngles}</color></color>");
+            Debug.Log($"<color=#ff00ff>[PlayerWalk] PlayerVisual.rotation.eulerAngles = <color=#00ff00>{this.transform.rotation.eulerAngles}</color></color>");
         }
 
         /// <summary>

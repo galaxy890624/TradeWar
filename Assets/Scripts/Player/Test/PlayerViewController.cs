@@ -8,15 +8,15 @@ namespace galaxy890624
     public class PlayerViewController : MonoBehaviour
     {
         [Header("滑鼠靈敏度")]
-        [Range(0.1f, 2f)] public float Sensitivity = 2f;
+        [Range(1f, 3f)] public float Sensitivity = 2f; // 一步 = 0.1deg
 
         [Header("仰角限制")]
         public float MinPitch = -90f;
         public float MaxPitch = 90f;
 
         [Header("控制對象")]
-        public Transform PlayerBody;     // 控制水平旋轉的角色主體 (Y軸)
-        public Transform CameraPivot;    // 控制垂直旋轉的相機或視角空物件 (X軸)
+        public Transform PlayerBody; // 控制水平旋轉的角色主體 (Y軸)
+        public Transform CameraPivot; // 控制垂直旋轉的相機或視角空物件 (X軸)
 
         private float Pitch = 0f;
 
