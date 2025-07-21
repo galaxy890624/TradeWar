@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace galaxy890624{
+namespace galaxy890624
+{
     /// <summary>
     /// 玩家在地面上的狀態 <br><br></br></br>
     /// 1. 玩家在地面上時的行為 <br></br>

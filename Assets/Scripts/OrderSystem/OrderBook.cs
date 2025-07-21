@@ -49,10 +49,8 @@ public class OrderBook
 
     public void PlaceOrder(Order order)
     {
-        if (order.Type == Order.OrderType.Buy)
-            buyOrders.Add(order);
-        else
-            sellOrders.Add(order);
+        if (order.Type == Order.OrderType.Buy) buyOrders.Add(order);
+        else sellOrders.Add(order);
 
         MatchOrders();
     }
@@ -74,12 +72,7 @@ public class OrderBook
                 int tradedQuantity = Math.Min(buy.Quantity, sell.Quantity);
                 float tradePrice = sell.Price; // 你也可以用 (buy.Price + sell.Price) / 2f
 
-                Trade trade = new Trade(
-                    buyerId: buy.PlayerId,
-                    sellerId: sell.PlayerId,
-                    price: tradePrice,
-                    quantity: tradedQuantity
-                );
+                Trade trade = new Trade( buyerId: buy.PlayerId, sellerId: sell.PlayerId, price: tradePrice, quantity: tradedQuantity );
 
                 tradeHistory.Add(trade);
                 Debug.Log($"<color=#ff00ff>[TRADE] <color=#00ff00>{tradedQuantity}</color> units @ <color=#00ff00>{tradePrice}</color> between <color=#00ff00>{buy.PlayerId}</color> and <color=#00ff00>{sell.PlayerId}</color></color>");
@@ -98,40 +91,27 @@ public class OrderBook
 
     public List<Order> GetTopBids(int depth = 5)
     {
-        return buyOrders
-            .OrderByDescending(o => o.Price)
-            .ThenBy(o => o.Timestamp)
-            .Take(depth)
-            .ToList();
+        return buyOrders.OrderByDescending(o => o.Price).ThenBy(o => o.Timestamp).Take(depth).ToList();
     }
 
     public List<Order> GetTopAsks(int depth = 5)
     {
-        return sellOrders
-            .OrderBy(o => o.Price)
-            .ThenBy(o => o.Timestamp)
-            .Take(depth)
-            .ToList();
+        return sellOrders.OrderBy(o => o.Price).ThenBy(o => o.Timestamp).Take(depth).ToList();
     }
 
     public List<Trade> GetTradeHistory(int limit = 50)
     {
-        return tradeHistory
-            .OrderByDescending(t => t.Timestamp)
-            .Take(limit)
-            .ToList();
+        return tradeHistory.OrderByDescending(t => t.Timestamp).Take(limit).ToList();
     }
 
     public void PrintOrderBook()
     {
         Debug.Log("----- ORDER BOOK -----");
         Debug.Log(" BIDS:");
-        foreach (var bid in GetTopBids())
-            Debug.Log($"<color=#ff00ff>  [B] <color=#00ff00>{bid.Quantity}</color> @ <color=#00ff00>{bid.Price}</color></color>");
+        foreach (var bid in GetTopBids()) Debug.Log($"<color=#ff00ff>  [B] <color=#00ff00>{bid.Quantity}</color> @ <color=#00ff00>{bid.Price}</color></color>");
 
         Debug.Log(" ASKS:");
-        foreach (var ask in GetTopAsks())
-            Debug.Log($"<color=#ff00ff>  [S] <color=#00ff00>{ask.Quantity}</color> @ <color=#00ff00>{ask.Price}</color></color>");
+        foreach (var ask in GetTopAsks()) Debug.Log($"<color=#ff00ff>  [S] <color=#00ff00>{ask.Quantity}</color> @ <color=#00ff00>{ask.Price}</color></color>");
     }
 }
 

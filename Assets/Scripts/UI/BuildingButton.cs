@@ -1,6 +1,4 @@
-﻿using TMPro;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace galaxy890624

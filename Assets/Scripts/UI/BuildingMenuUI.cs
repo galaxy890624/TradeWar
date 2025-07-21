@@ -1,13 +1,12 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using galaxy890624;
 
 public class BuildingMenuUI : MonoBehaviour
 {
-    [Header("UI ³]©w")]
-    public Transform buttonParent; // ««ª½±Æ¦C«ö¶sªº Panel
-    public GameObject buttonPrefab; // «Ø¿v«ö¶sªº¹w»s¥ó
+    [Header("UI è¨­å®š")]
+    public Transform buttonParent; // å‚ç›´æ’åˆ—æŒ‰éˆ•çš„ Panel
+    public GameObject buttonPrefab; // å»ºç¯‰æŒ‰éˆ•çš„é è£½ä»¶
 
     private void Start()
     {

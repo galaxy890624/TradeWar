@@ -1,20 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace galaxy890624
 {
     /// <summary>
-    /// ±±¨î«Ø¿v­±ªO¤¤©Ò¦³«Ø¿v«ö¶sªº¥Í¦¨»P¸j©w
+    /// æ§åˆ¶å»ºç¯‰é¢æ¿ä¸­æ‰€æœ‰å»ºç¯‰æŒ‰éˆ•çš„ç”Ÿæˆèˆ‡ç¶å®š
     /// </summary>
     public class BuildingPanelController : MonoBehaviour
     {
-        [Header("«ö¶s¹w»sª« & ´¡¤J¦ì¸m")]
+        [Header("æŒ‰éˆ•é è£½ç‰© & æ’å…¥ä½ç½®")]
         [SerializeField] private GameObject buttonPrefab;
         [SerializeField] private Transform contentRoot;
 
-        [Header("«Ø¿v¸ê®Æ¦Cªí")]
+        [Header("å»ºç¯‰è³‡æ–™åˆ—è¡¨")]
         [SerializeField] private List<BuildingData> buildingList;
 
         private void Start()
@@ -26,7 +25,7 @@ namespace galaxy890624
                 ui.Initialize(data);
 
                 Button btn = go.GetComponent<Button>();
-                btn.onClick.AddListener(ui.OnClick); // ¸j©wÂIÀ»¨Æ¥ó
+                btn.onClick.AddListener(ui.OnClick); // ç¶å®šé»æ“Šäº‹ä»¶
             }
         }
     }

@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+ï»¿using UnityEngine;
 using TMPro;
 
 public class PlayerPosition : MonoBehaviour
 {
-    [Header("ª±®a®y¼Ðªº¤å¦r")]
+    [Header("çŽ©å®¶åº§æ¨™çš„æ–‡å­—")]
     [SerializeField]
     private TextMeshProUGUI PlayerDataText;
-    [Header("ª±®aªºª«¥ó")]
+    [Header("çŽ©å®¶çš„ç‰©ä»¶")]
     [SerializeField]
     private GameObject Player;
 

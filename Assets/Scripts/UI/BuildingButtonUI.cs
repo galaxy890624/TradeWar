@@ -1,38 +1,38 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 namespace galaxy890624
 {
     /// <summary>
-    /// «Ø¿v¿ï³æ¤¤ªº³æ¤@«Ø¿v«ö¶s±±¨î <br></br>
+    /// å»ºç¯‰é¸å–®ä¸­çš„å–®ä¸€å»ºç¯‰æŒ‰éˆ•æ§åˆ¶ <br></br>
     /// </summary>
     public class BuildingButtonUI : MonoBehaviour
     {
-        [Header("BuildingData ªº ScriptableObj")]
+        [Header("BuildingData çš„ ScriptableObj")]
         [SerializeField] private BuildingData BuildingData;
-        [Header("UI ¤¸¥ó")]
+        [Header("UI å…ƒä»¶")]
         [SerializeField] private Image iconImage;
         [SerializeField] private TMP_Text nameText;
-        [SerializeField] private TMP_Text descText; // ¤É¯Å«Ø¿v´y­z¤å¦r
+        [SerializeField] private TMP_Text descText; // å‡ç´šå»ºç¯‰æè¿°æ–‡å­—
 
         private BuildingData buildingData;
 
         /// <summary>
-        /// ªì©l¤Æ«ö¶sÅã¥Ü¸ê®Æ <br></br>
+        /// åˆå§‹åŒ–æŒ‰éˆ•é¡¯ç¤ºè³‡æ–™ <br></br>
         /// </summary>
         public void Initialize(BuildingData data)
         {
             buildingData = data;
-            // «Ø¿v¤ÀÃş »P µ¥¯Å ªº¤å¦r
+            // å»ºç¯‰åˆ†é¡ èˆ‡ ç­‰ç´š çš„æ–‡å­—
             nameText.text = $"<color=#ff00ff>{data.category} <color=#00ff00>Lv{data.level}</color></color>";
-            descText.text = $"<color=#ff00ff>ªá¶O¡G<color=#00ff00>{data.costMoney}</color>¡A¤j¤p¡G<color=#00ff00>{data.width}¡Ñ{data.height}</color></color>";
+            descText.text = $"<color=#ff00ff>èŠ±è²»ï¼š<color=#00ff00>{data.costMoney}</color>ï¼Œå¤§å°ï¼š<color=#00ff00>{data.width}Ã—{data.height}</color></color>";
 
             if (data.icon != null) iconImage.sprite = data.icon;
         }
 
         /// <summary>
-        /// ·í«ö¶s³QÂIÀ»¡A©I¥s«Ø³y¼Ò¦¡ <br></br>
+        /// ç•¶æŒ‰éˆ•è¢«é»æ“Šï¼Œå‘¼å«å»ºé€ æ¨¡å¼ <br></br>
         /// </summary>
         public void OnClick()
         {
@@ -42,7 +42,7 @@ namespace galaxy890624
             }
             else
             {
-                Debug.LogWarning("BuildPlacer.Instance ¤£¦s¦b¡I");
+                Debug.LogWarning("BuildPlacer.Instance ä¸å­˜åœ¨ï¼");
             }
         }
     }

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.Rendering.DebugUI.Table;
+﻿using UnityEngine;
 
 /// <summary>
 /// 在場景設計階段就生成地圖物件（支援置中排列與隨機一棵樹）
