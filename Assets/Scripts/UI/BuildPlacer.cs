@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Cinemachine;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,9 +20,9 @@ namespace galaxy890624
         public Material previewMaterial;
 
         [Header("建築攝影機與 UI 控制")]
-        public Camera buildCamera; // 俯視建築相機
-        public Camera playerCamera; // 玩家控制的原本相機
-        public GameObject buildingUIRoot; // 右側建築 UI 面板
+        public CinemachineVirtualCamera buildCamera; // 俯視建築相機
+        public CinemachineVirtualCamera playerCamera; // 玩家控制的原本相機
+        public GameObject buildingUIRoot; // 整個"建築選單UI"的總容器,也就是建築按鈕 ( 例如 : 住宅 Lv1、交易所 Lv2、研究所 Lv1 ) 的父物件
 
         private GameObject currentPreview;
         private BuildingData currentData;
