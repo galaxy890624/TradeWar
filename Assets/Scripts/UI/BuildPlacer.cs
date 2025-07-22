@@ -22,7 +22,7 @@ namespace galaxy890624
         [Header("建築攝影機與 UI 控制")]
         public CinemachineVirtualCamera buildCamera; // 俯視建築相機
         public CinemachineVirtualCamera playerCamera; // 玩家控制的原本相機
-        public GameObject buildingUIRoot; // 整個"建築選單UI"的總容器,也就是建築按鈕 ( 例如 : 住宅 Lv1、交易所 Lv2、研究所 Lv1 ) 的父物件
+        public GameObject buildingUIRoot; // 整個"建築選單UI"的總容器,也就是建築按鈕 ( 例如 : 住宅 Lv1、交易所 Lv2、研究所 Lv1 ) 的父物件 : ScrollView
 
         private GameObject currentPreview;
         private BuildingData currentData;
@@ -114,6 +114,8 @@ namespace galaxy890624
 
             // 滑鼠右鍵取消放置
             if (Input.GetMouseButtonDown(1)) EndPlacing();
+
+            
         }
 
         /// <summary>
