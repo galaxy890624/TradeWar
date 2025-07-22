@@ -129,7 +129,7 @@ public class BuildPlacer : MonoBehaviour
     }
 }
 
-// 建議搭配的 Unity UI 結構：
+// 建議搭配的 Unity UI 結構 : 
 // - Canvas
 //   - Panel (靠右固定定位，Vertical Layout Group)
 //     - ButtonPrefab (含 icon + name + 建立事件)

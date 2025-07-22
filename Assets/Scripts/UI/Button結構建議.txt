@@ -7,7 +7,7 @@ ButtonPrefab（建築按鈕）
 腳本掛載	BuildingButton.cs
 
 
-Button 結構建議：
+Button 結構建議 : 
 
 ButtonPrefab
 ├── Icon (Image) → 對應 BuildingData.icon
@@ -22,9 +22,9 @@ BuildPlacer（放置控制器）
 物件名稱建議	GameManager 或 BuildController
 用途	控制滑鼠預覽、旋轉建築、點選放置
 腳本掛載	BuildPlacer.cs
-設定	在 Inspector 中指定：
+設定	在 Inspector 中指定 : 
 
-groundMask → 指向 Layer：Ground（或 MapTile）
+groundMask → 指向 Layer : Ground（或 MapTile）
 
 previewMaterial → 半透明材質（讓建築預覽有區別）
 

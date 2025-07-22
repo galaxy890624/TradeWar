@@ -151,7 +151,7 @@ public class MapData : ScriptableObject
     /// </summary>
     public int TotalTiles => Rows * Cols;
 
-    // Unity Editor專用：當Inspector中的值改變時自動調用
+    // Unity Editor專用 : 當Inspector中的值改變時自動調用
     private void OnValidate()
     {
         // 確保陣列大小與地圖尺寸匹配

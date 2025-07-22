@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 整體存檔結構：包含所有建築
+/// 整體存檔結構 : 包含所有建築
 /// </summary>
 [Serializable]
 public class SaveData

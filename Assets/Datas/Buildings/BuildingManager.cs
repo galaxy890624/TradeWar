@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// 統一管理所有 BuildingData 資料
-/// 提供查找與建造介面：
+/// 提供查找與建造介面 : 
 /// GetBuilding() → 根據分類與等級找到資料
 /// GetNextLevel() → 找到升級對象
 /// TryBuild() → 嘗試在某塊地格建造建築

@@ -19,7 +19,7 @@ public class Building : MonoBehaviour
     public int leftTopRow;
     public int leftTopCol;
 
-    // 寬高（單位：tile 數量）
+    // 寬高（單位 : tile 數量）
     public int width;
     public int height;
 
@@ -60,7 +60,7 @@ public class Building : MonoBehaviour
     }
 
     /// <summary>
-    /// 拆除建築：釋放格子 → 移除自己
+    /// 拆除建築 : 釋放格子 → 移除自己
     /// </summary>
     public void DestroySelf()
     {
@@ -88,7 +88,7 @@ public class Building : MonoBehaviour
         // 可擴充資源檢查、科技限制等
         // TODO: check player resource
 
-        // 升級：卸除目前建築 → 替換為新建築
+        // 升級 : 卸除目前建築 → 替換為新建築
         Vector3 pos = transform.position;
         Quaternion rot = transform.rotation;
 

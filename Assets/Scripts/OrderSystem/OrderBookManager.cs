@@ -8,7 +8,7 @@ public class OrderBookManager : MonoBehaviour
     {
         orderBook = new OrderBook();
 
-        // 測試：加入一些訂單
+        // 測試 : 加入一些訂單
         orderBook.PlaceOrder(new Order(Order.OrderType.Buy, 100f, 10, "Alice"));
         orderBook.PlaceOrder(new Order(Order.OrderType.Sell, 99f, 5, "Bob"));
         orderBook.PlaceOrder(new Order(Order.OrderType.Sell, 98f, 10, "Charlie"));

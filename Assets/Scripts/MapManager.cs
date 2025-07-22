@@ -71,7 +71,7 @@ public class MapManager : MonoBehaviour
                     content.name = $"Obj_{i}_{j}";
                 }
 
-                Debug.Log($"<color=#ff00ff>[MapManager.cs] 生成 Tile：</color><color=#00ff00>({i}, {j}) → {position}</color>");
+                Debug.Log($"<color=#ff00ff>[MapManager.cs] 生成 Tile : </color><color=#00ff00>({i}, {j}) → {position}</color>");
             }
         }
     }

@@ -38,7 +38,7 @@ namespace galaxy890624
 
             string json = JsonUtility.ToJson(save, true);
             File.WriteAllText(FullPath, json);
-            Debug.Log($"存檔完成：{FullPath}");
+            Debug.Log($"存檔完成 : {FullPath}");
         }
 
         /// <summary>

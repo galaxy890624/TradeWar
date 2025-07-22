@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace galaxy890624
 {
@@ -7,28 +8,52 @@ namespace galaxy890624
     /// 放置控制器 <br></br><br></br>
     /// 控制放置流程（預覽、旋轉、確認建造）<br></br>
     /// 控制玩家當前的建造狀態 <br></br>
+    /// 建築時切換到俯視相機並顯示 UI <br></br>
     /// </summary>
     public class BuildPlacer : MonoBehaviour
     {
         public static BuildPlacer Instance { get; private set; }
 
+        [Header("建築放置設定")]
         public LayerMask groundMask;
         public Material previewMaterial;
+
+        [Header("建築攝影機與 UI 控制")]
+        public Camera buildCamera; // 俯視建築相機
+        public Camera playerCamera; // 玩家控制的原本相機
+        public GameObject buildingUIRoot; // 右側建築 UI 面板
 
         private GameObject currentPreview;
         private BuildingData currentData;
         private float currentRotation = 0f;
 
+        /// <summary>
+        /// 事件系統 <br><br></br></br>
+        /// 1. 當按下蓋建築鍵的時候, 要做的事情 <br></br>
+        /// 2. 切換攝影機 : 玩家的攝影機 -> MapManager的攝影機 <br></br>
+        /// </summary>
+        private Event EventSystem;
+
         private void Awake()
         {
             Instance = this;
+
+            // 初始化時關閉建築 UI 和建築相機
+            if (buildingUIRoot != null) buildingUIRoot.SetActive(false);
+            if (buildCamera != null) buildCamera.gameObject.SetActive(false);
         }
         /// <summary>
-        /// 點擊建築選單按鈕 → 開始建築預覽模式
+        /// 開始建築流程 : 由 UI 按鈕觸發 <br><br></br></br>
+        /// 點擊建築選單按鈕 → 開始建築預覽模式 <br></br>
         /// </summary>
         public void StartPlacing(BuildingData data)
         {
             currentData = data;
+
+            // 啟用建築模式 : 切換鏡頭與 UI
+            if (playerCamera != null) playerCamera.gameObject.SetActive(false);
+            if (buildCamera != null) buildCamera.gameObject.SetActive(true);
+            if (buildingUIRoot != null) buildingUIRoot.SetActive(true);
 
             // 如果有之前的預覽建築, 就清除掉
             if (currentPreview != null) Destroy(currentPreview);
@@ -73,10 +98,7 @@ namespace galaxy890624
                 if (Input.GetMouseButtonDown(0) && canPlace)
                 {
                     PlaceBuilding(currentData, occupiedTiles, currentRotation);
-
-                    Destroy(currentPreview);
-                    currentPreview = null;
-                    currentData = null;
+                    EndPlacing();
                 }
             }
 
@@ -90,17 +112,26 @@ namespace galaxy890624
             }
 
             // 滑鼠右鍵取消放置
-            if (Input.GetMouseButtonDown(1))
-            {
-                Destroy(currentPreview);
-                currentPreview = null;
-                currentData = null;
-            }
+            if (Input.GetMouseButtonDown(1)) EndPlacing();
         }
 
         /// <summary>
-        /// 建立建築物在指定的 tiles 區域
-        /// 可供升級、載入、編輯器產生等用途
+        /// 結束建築流程 : 清除預覽、還原 UI 與攝影機。
+        /// </summary>
+        private void EndPlacing()
+        {
+            if (currentPreview != null) Destroy(currentPreview);
+            currentPreview = null;
+            currentData = null;
+
+            if (playerCamera != null) playerCamera.gameObject.SetActive(true);
+            if (buildCamera != null) buildCamera.gameObject.SetActive(false);
+            if (buildingUIRoot != null) buildingUIRoot.SetActive(false);
+        }
+
+        /// <summary>
+        /// 建立建築物在指定的 tiles 區域 <br></br>
+        /// 可供升級、載入、編輯器產生等用途 <br></br>
         /// </summary>
         public void PlaceBuilding(BuildingData data, List<MapTile> tiles, float rotationY = 0f)
         {
@@ -122,7 +153,7 @@ namespace galaxy890624
 
         /// <summary>
         /// 取得從某起點開始，向右下延展的 tile 區塊 <br></br>
-        /// 找出從左上角開始，寬×高 的所有格子
+        /// 找出從左上角開始，寬×高 的所有格子 <br></br>
         /// </summary>
         private List<MapTile> GetTilesToOccupy(int startRow, int startCol, int width, int height)
         {
@@ -130,18 +161,14 @@ namespace galaxy890624
 
             foreach (MapTile tile in FindObjectsOfType<MapTile>())
             {
-                if (tile.row >= startRow && tile.row < startRow + height &&
-                    tile.col >= startCol && tile.col < startCol + width)
-                {
-                    result.Add(tile);
-                }
+                if (tile.row >= startRow && tile.row < startRow + height && tile.col >= startCol && tile.col < startCol + width) result.Add(tile);
             }
 
             return result;
         }
 
         /// <summary>
-        /// 將預覽建築套用透明材質
+        /// 將預覽建築套用透明材質 <br></br>
         /// </summary>
         private void ApplyPreviewMaterial(GameObject obj)
         {
@@ -155,7 +182,7 @@ namespace galaxy890624
 }
 
 
-// 建議搭配的 Unity UI 結構：
+// 建議搭配的 Unity UI 結構 : 
 // - Canvas
 //   - Panel (靠右固定定位，Vertical Layout Group)
 //     - ButtonPrefab (含 icon + name + 建立事件)
