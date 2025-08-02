@@ -7,8 +7,6 @@ namespace galaxy890624
     /// </summary>
     public class PlayerWalk : PlayerGround
     {
-        // 滑鼠控制玩家的視角
-        public MouseRotation MouseRotation;
         public PlayerWalk(string _StateName, Player _Player, StateMachine _StateMachine) : base(_StateName, _Player, _StateMachine)
         {
         }
@@ -31,7 +29,7 @@ namespace galaxy890624
 
             // 抓取玩家虛擬攝影機的 Transform (通常就是跟滑鼠連動的那個視角軸)
             // 這個相機控制的是 "你要走哪裡" 的方向基礎
-            Transform VirtualCameraTransform = Player.VirtualCameraTransform; // Player.cs
+            Transform VirtualCameraTransform = Camera.main.transform;
 
             // 人物模型也要跟著視角旋轉
             // VirtualCameraTransform.rotation.y = MouseRotation.MouseXInput;

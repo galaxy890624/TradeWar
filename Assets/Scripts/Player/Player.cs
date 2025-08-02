@@ -105,7 +105,7 @@ namespace galaxy890624
             StateMachine.UpdateState();
 
             // 測試 PlayerVisual 是否真的有被轉動, 這裡顯示的是 Quaternion.Euler
-            Debug.Log($"<color=#ff00ff>[PlayerWalk] PlayerVisual.rotation.eulerAngles = <color=#00ff00>{this.transform.rotation.eulerAngles}</color></color>");
+            //Debug.Log($"<color=#ff00ff>[Player.cs] PlayerVisual.rotation.eulerAngles = <color=#00ff00>{this.transform.rotation.eulerAngles}</color></color>");
         }
 
         /// <summary>

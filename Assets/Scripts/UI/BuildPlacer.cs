@@ -115,7 +115,12 @@ namespace galaxy890624
             // 滑鼠右鍵取消放置
             if (Input.GetMouseButtonDown(1)) EndPlacing();
 
-            
+            // F7開啟建造模式
+            if (Input.GetKeyDown(KeyCode.F7))
+            {
+                BuildPlacer.Instance.StartPlacing(currentData);
+                Debug.Log("<color=#ff00ff>[BuildPlacer.cs] <color=#00ff00>F7 - 開始建造模式</color></color>");
+            }
         }
 
         /// <summary>
