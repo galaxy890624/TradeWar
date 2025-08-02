@@ -1,5 +1,6 @@
 ﻿using Cinemachine;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,6 +24,9 @@ namespace galaxy890624
         public CinemachineVirtualCamera buildCamera; // 俯視建築相機
         public CinemachineVirtualCamera playerCamera; // 玩家控制的原本相機
         public GameObject buildingUIRoot; // 整個"建築選單UI"的總容器,也就是建築按鈕 ( 例如 : 住宅 Lv1、交易所 Lv2、研究所 Lv1 ) 的父物件 : ScrollView
+
+        [Header("測試用建築資料 (F7 鍵用)")]
+        public BuildingData testData;
 
         private GameObject currentPreview;
         private BuildingData currentData;
@@ -51,9 +55,16 @@ namespace galaxy890624
         {
             currentData = data;
 
-            // 啟用建築模式 : 切換鏡頭與 UI
+            if (currentData == null)
+            {
+                Debug.LogWarning("<color=#ff00ff>[BuildPlacer.cs] <color=#ff00ff>currentData -> null </color>, 無法開始建造。</color>");
+                return;
+            }
+
+            // 開啟攝影機
             if (playerCamera != null) playerCamera.gameObject.SetActive(false);
             if (buildCamera != null) buildCamera.gameObject.SetActive(true);
+            // 開啟建築 UI
             if (buildingUIRoot != null) buildingUIRoot.SetActive(true);
 
             // 如果有之前的預覽建築, 就清除掉
@@ -63,19 +74,39 @@ namespace galaxy890624
             currentPreview = Instantiate(data.prefab);
             ApplyPreviewMaterial(currentPreview);
             currentRotation = 0f;
+
+            Debug.Log($"<color=#ff00ff>[BuildPlacer.cs] 建造模式開始：<color=#00ff00>{data.prefab.name}</color></color>");
         }
 
         void Update()
         {
-            if (currentPreview == null) return;
+            if (currentPreview == null)
+            {
+                // F7 測試建造模式
+                if (Input.GetKeyDown(KeyCode.F7))
+                {
+                    StartPlacing(testData);
+                    Debug.Log("<color=#ff00ff>[BuildPlacer.cs] <color=#00ff00>F7 - 開始建造模式（測試資料）</color></color>");
+                }
+                else
+                {
+                    Debug.LogWarning("<color=#ff00ff>[BuildPlacer.cs] <color=#ff0000>testData 尚未設定！</color></color>");
+                    return;
+                }
+            }
 
             // 滑鼠點擊地格 (左上角起點)
             // 滑鼠發射 Ray 偵測地格
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundMask))
             {
+                Debug.Log($"<color=#ff00ff>[BuildPlacer.cs] Hit: <color=#00ff00>{hit.collider.name}</color></color>");
                 MapTile startTile = hit.collider.GetComponent<MapTile>();
-                if (startTile == null) return;
+                if (startTile == null)
+                {
+                    Debug.LogWarning("<color=#ff00ff>[BuildPlacer.cs] <color=#ff0000>Hit 到的物件沒有 MapTile 組件</color></color>");
+                    return;
+                }
 
                 // 找出起點 row/col
                 int startRow = startTile.row;
@@ -96,10 +127,18 @@ namespace galaxy890624
                 currentPreview.transform.rotation = Quaternion.Euler(0, currentRotation, 0);
 
                 // 滑鼠左鍵放置建築
-                if (Input.GetMouseButtonDown(0) && canPlace)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    PlaceBuilding(currentData, occupiedTiles, currentRotation);
-                    EndPlacing();
+                    if (canPlace)
+                    {
+                        PlaceBuilding(currentData, occupiedTiles, currentRotation);
+                        EndPlacing();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("<color=#ff00ff>[BuildPlacer.cs] <color=#ff0000>無法放置建築，格子已被佔用或不夠</color></color>");
+                        return;
+                    }
                 }
             }
 
@@ -114,13 +153,6 @@ namespace galaxy890624
 
             // 滑鼠右鍵取消放置
             if (Input.GetMouseButtonDown(1)) EndPlacing();
-
-            // F7開啟建造模式
-            if (Input.GetKeyDown(KeyCode.F7))
-            {
-                BuildPlacer.Instance.StartPlacing(currentData);
-                Debug.Log("<color=#ff00ff>[BuildPlacer.cs] <color=#00ff00>F7 - 開始建造模式</color></color>");
-            }
         }
 
         /// <summary>
@@ -157,6 +189,8 @@ namespace galaxy890624
                 tile.IsOccupied = true;
                 tile.CurrentBuilding = building;
             }
+
+            Debug.Log($"<color=#ff00ff>[BuildPlacer.cs] 建築完成 : <color=#00ff00>{data.prefab.name}</color></color>");
         }
 
         /// <summary>

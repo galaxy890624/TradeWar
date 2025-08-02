@@ -31,6 +31,11 @@ namespace galaxy890624
             if (data.icon != null) iconImage.sprite = data.icon;
         }
 
+        private void Start()
+        {
+            GetComponent<Button>().onClick.AddListener(OnClick);
+        }
+
         /// <summary>
         /// 當按鈕被點擊，呼叫建造模式 <br></br>
         /// </summary>
@@ -42,7 +47,7 @@ namespace galaxy890624
             }
             else
             {
-                Debug.LogWarning("BuildPlacer.Instance 不存在！");
+                Debug.LogWarning("<color=#ff00ff>[BuildingButtonUI.cs] <color=#ff0000>BuildPlacer.Instance 未綁定！</color></color>");
             }
         }
     }
