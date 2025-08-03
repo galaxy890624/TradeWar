@@ -46,6 +46,9 @@ namespace galaxy890624
             // 初始化時關閉建築 UI 和建築相機
             if (buildingUIRoot != null) buildingUIRoot.SetActive(false);
             if (buildCamera != null) buildCamera.gameObject.SetActive(false);
+
+            // 初始化的時候, 把建築模式照相機的Rotation.x設定成90deg(向下)
+            // buildCamera.transform.rotation.eulerAngles = new Vector3(90f, 0f, 0f);
         }
         /// <summary>
         /// 開始建築流程 : 由 UI 按鈕觸發 <br><br></br></br>
