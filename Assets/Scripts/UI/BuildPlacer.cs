@@ -72,6 +72,7 @@ namespace galaxy890624
 
             // 產生新的建築預覽模型
             currentPreview = Instantiate(data.prefab);
+            previewMaterial = data.prefab.GetComponentInChildren<Renderer>().material;
             ApplyPreviewMaterial(currentPreview);
             currentRotation = 0f;
 
@@ -87,6 +88,7 @@ namespace galaxy890624
                 {
                     StartPlacing(testData);
                     Debug.Log("<color=#ff00ff>[BuildPlacer.cs] <color=#00ff00>F7 - 開始建造模式（測試資料）</color></color>");
+                    return;
                 }
                 else
                 {
