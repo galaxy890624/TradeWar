@@ -1,0 +1,46 @@
+你的場景調整建議
+整合完要改這些：
+
+地圖上的每個 Tile
+
+不再掛 TileSelector
+
+只需要 MapTile + Collider（可選 MeshRenderer）。
+
+UI 建築按鈕面板
+
+Panel 物件掛 BuildingUIManager
+
+指定按鈕預製件（buttonPrefab）和容器（buttonParent）
+
+按鈕預製件裡需要有：
+
+scss
+複製
+編輯
+Icon (Image)
+Name (TMP_Text)
+Desc (TMP_Text)
+Button (Button)
+相機
+
+PlayerCamera（遊玩視角）
+
+BuildCamera（建造視角）
+
+BuildPlacer 裡綁定這兩個。
+
+
+刪減後專案的結構會變成：
+
+Scripts/
+ ├── BuildSystem/
+ │    ├── BuildPlacer.cs       // 單一建造控制器（整合版）
+ │    ├── BuildingManager.cs   // 儲存/取得建築資料
+ │    ├── MapTile.cs           // 地圖格子資料
+ │    ├── Building.cs          // 建築物本體資料
+ │    └── BuildingData.cs      // ScriptableObject 建築資料
+ │
+ └── UI/
+      └── BuildingUIManager.cs // 建築按鈕面板控制（整合版）
+這樣比你現在少一半腳本，而且建造流程從「按鈕點擊 → BuildPlacer → 地圖檢查 → 放置」是完全統一的，不會有兩套系統搶控制權。

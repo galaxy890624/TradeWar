@@ -1,29 +1,27 @@
-#if UNITY_EDITOR
-using UnityEngine;
+ï»¿#if UNITY_EDITOR
+using galaxy890624;
 using UnityEditor;
+using UnityEngine;
 
 /// <summary>
-/// ±N¥Ø«e¦a¹Ï³õ´º¤º®e¼g¤J MapData ªº MapInfo[] °t¸m
+/// å°‡ç›®å‰å ´æ™¯ä¸­çš„åœ°åœ–å…§å®¹æ›´æ–°å› MapData
 /// </summary>
 public class MapDataUpdater : MonoBehaviour
 {
-    [MenuItem("Tools/¦a¹Ï¤u¨ã/±N³õ´º¤¤ªº°t¸m¼g¤J MapData")]
+    [MenuItem("Tools/åœ°åœ–å·¥å…·/å°‡å ´æ™¯ä¸­çš„é…ç½®å¯«å…¥ MapData")]
     public static void ApplySceneToMapData()
     {
         MapManager manager = FindObjectOfType<MapManager>();
         if (manager == null)
         {
-            Debug.LogError("§ä¤£¨ì MapManager¡I");
+            Debug.LogError("æ‰¾ä¸åˆ° MapManagerï¼");
             return;
         }
 
-        // ¨ú¥X MapData
-        var mapDataField = manager.GetType().GetField("mapData", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         MapData mapData = manager.MapData;
-
         if (mapData == null)
         {
-            Debug.LogError("MapManager ¥¼³]©w MapData¡I");
+            Debug.LogError("MapManager æœªè¨­å®š MapDataï¼");
             return;
         }
 
@@ -43,13 +41,11 @@ public class MapDataUpdater : MonoBehaviour
             GameObject child = tile.transform.GetChild(0).gameObject;
             string objName = child.name.Replace("(Clone)", "").Trim();
 
-            // ´M§ä prefab ¹ïÀ³
             for (int i = 0; i < mapData.MapPrefab.Length; i++)
             {
                 if (mapData.MapPrefab[i] == null) continue;
 
-                string prefabName = mapData.MapPrefab[i].name;
-                if (objName == prefabName)
+                if (objName == mapData.MapPrefab[i].name)
                 {
                     mapData.SetTileObject(row, col, mapData.MapPrefab[i]);
                     break;
@@ -59,7 +55,7 @@ public class MapDataUpdater : MonoBehaviour
 
         EditorUtility.SetDirty(mapData);
         AssetDatabase.SaveAssets();
-        Debug.Log("<color=green>MapData ¤w§ó·s¦¨¥\¡I¡]¤w¼g¤J MapInfo[]¡^</color>");
+        Debug.Log("<color=green>MapData å·²æ›´æ–°æˆåŠŸï¼ï¼ˆå·²å¯«å…¥é™£åˆ—è³‡æ–™ï¼‰</color>");
     }
 }
 #endif

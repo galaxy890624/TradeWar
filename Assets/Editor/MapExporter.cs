@@ -1,28 +1,28 @@
-#if UNITY_EDITOR
-using UnityEngine;
-using UnityEditor;
+ï»¿#if UNITY_EDITOR
+using galaxy890624;
 using System.Text;
+using UnityEditor;
+using UnityEngine;
 
 /// <summary>
-/// ±N·í«e³õ´º¤Wªº©Ò¦³ MapTile °t¸mÂà¬° C# µ{¦¡½X
+/// å°‡ç•¶å‰å ´æ™¯ä¸Šçš„æ‰€æœ‰ MapTile é…ç½®è½‰ç‚º C# ç¨‹å¼ç¢¼ï¼ˆå¯è²¼å› MapData åˆå§‹åŒ–ç”¨ï¼‰
 /// </summary>
 public class MapExporter : MonoBehaviour
 {
-    [MenuItem("Tools/¦a¹Ï¤u¨ã/¶×¥X¦a¹Ï°t¸mµ{¦¡½X")]
+    [MenuItem("Tools/åœ°åœ–å·¥å…·/åŒ¯å‡ºåœ°åœ–é…ç½®ç¨‹å¼ç¢¼")]
     public static void ExportMapConfiguration()
     {
         MapManager mapManager = FindObjectOfType<MapManager>();
         if (mapManager == null)
         {
-            Debug.LogError("§ä¤£¨ì MapManager ª«¥ó¡I");
+            Debug.LogError("æ‰¾ä¸åˆ° MapManager ç‰©ä»¶ï¼");
             return;
         }
 
         MapData mapData = mapManager.MapData;
-
         if (mapData == null)
         {
-            Debug.LogError("MapManager ¤W¥¼³]©w MapData¡I");
+            Debug.LogError("MapManager ä¸Šæœªè¨­å®š MapDataï¼");
             return;
         }
 
@@ -33,9 +33,10 @@ public class MapExporter : MonoBehaviour
             int row = tile.row;
             int col = tile.col;
 
-            if (tile.transform.childCount == 0) continue; // ¨S¦³ª«¥ó´N¸õ¹L
+            if (tile.transform.childCount == 0) continue; // æ²’æœ‰å»ºç¯‰å°±è·³é
 
-            Transform obj = tile.transform.GetChild(0); // ²Ä¤@­Ó¤lª«¥ó
+            // å–ç¬¬ä¸€å€‹å­ç‰©ä»¶ï¼ˆå‡è¨­å°±æ˜¯å»ºç¯‰ï¼‰
+            Transform obj = tile.transform.GetChild(0);
 
             for (int i = 0; i < mapData.MapPrefab.Length; i++)
             {
@@ -53,10 +54,9 @@ public class MapExporter : MonoBehaviour
         }
 
         string result = sb.ToString();
-
-        // ½Æ»s¨ì°Å¶KÃ¯
         EditorGUIUtility.systemCopyBuffer = result;
-        Debug.Log("<color=green>¦a¹Ï°t¸m¤w½Æ»s¨ì°Å¶KÃ¯¡I</color>\n" + result);
+
+        Debug.Log("<color=green>åœ°åœ–é…ç½®å·²è¤‡è£½åˆ°å‰ªè²¼ç°¿ï¼</color>\n" + result);
     }
 }
 #endif

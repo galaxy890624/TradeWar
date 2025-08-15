@@ -15,8 +15,8 @@ MonoBehaviour:
   category: 2
   level: 1
   displayName: "\u4EA4\u6613\u6240Lv1"
-  prefab: {fileID: 0}
-  icon: {fileID: 0}
+  prefab: {fileID: 2779585508597460058, guid: 66e929164e517974792cc7db711b6921, type: 3}
+  icon: {fileID: 21300000, guid: 32a910569006e6f4288aeb55d4088d8b, type: 3}
   nextLevelData: {fileID: 11400000, guid: a8bbcbf370f05f143b1e17fe663bb0a4, type: 2}
   costMoney: 0
   costWood: 0

@@ -56,7 +56,7 @@ public class Building : MonoBehaviour
         Destroy(gameObject);
 
         // 呼叫 BuildPlacer 建造新建築在原格
-        BuildPlacer.Instance.PlaceBuilding(nextLevel, occupiedTiles.ToList());
+        BuildPlacer.Instance.PlaceBuilding(nextLevel, occupiedTiles.ToList(), transform.eulerAngles.y);
     }
 
     /// <summary>
