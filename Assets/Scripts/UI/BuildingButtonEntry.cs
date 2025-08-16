@@ -1,16 +1,18 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using galaxy890624;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 一顆建築按鈕的顯示與點擊邏輯 <br></br>
 /// </summary>
 public class BuildingButtonEntry : MonoBehaviour
 {
+    [SerializeField, Header("拖入你想建造的 prefab 資料")] public BuildingData buildingData;
     [Header("UI 參考")]
     [SerializeField] private Image iconImage;
     [SerializeField] private TMP_Text titleText;
-    [SerializeField] private TMP_Text subText;   // 顯示花費 / 尺寸
+    [SerializeField, Header("顯示花費 / 尺寸")] private TMP_Text subText;
     [SerializeField] private Button button;
 
     private BuildingData data;
@@ -29,6 +31,14 @@ public class BuildingButtonEntry : MonoBehaviour
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(OnClick);
         }
+    }
+
+    void Start()
+    {
+        button.onClick.AddListener(() =>
+        {
+            BuildPlacer.Instance.StartPlacing(buildingData);
+        });
     }
 
     private void OnClick()
