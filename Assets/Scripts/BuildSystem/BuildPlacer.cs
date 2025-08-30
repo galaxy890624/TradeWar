@@ -64,6 +64,7 @@ namespace galaxy890624
             if (currentPreview == null) return;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.Log($"<color=#ff00ff>[BuildPlacer.cs] ray = <color=#00ff00>{ray}</color></color>");
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundMask))
             {
                 MapTile startTile = hit.collider.GetComponent<MapTile>();
