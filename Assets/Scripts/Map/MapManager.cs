@@ -82,6 +82,9 @@ public class MapManager : MonoBehaviour
                 // 設定 Layer
                 tile.layer = LayerMask.NameToLayer("Ground");
 
+                // 為了不讓地圖格子穿透滑鼠射線，確保有 Collider + Layer = Ground
+                if (tile.GetComponent<Collider>() == null) tile.gameObject.AddComponent<BoxCollider>();
+
                 // 從 MapData 讀取預設物件
                 GameObject prefab = MapData != null ? MapData.GetTileObject(i, j) : null;
                 if (prefab != null)
