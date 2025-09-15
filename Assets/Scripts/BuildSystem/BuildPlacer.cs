@@ -18,7 +18,7 @@ namespace galaxy890624
 
         [Header("建築放置設定")]
         public LayerMask groundMask;
-        public Material previewMaterial;
+        //public Material previewMaterial;
 
         [Header("相機與 UI 控制")]
         public CinemachineVirtualCamera buildCamera;
@@ -62,7 +62,7 @@ namespace galaxy890624
             // Instantiate preview
             currentPreview = Instantiate(data.prefab);
             PreparePreview(currentPreview);
-            ApplyPreviewMaterial(currentPreview);
+            //ApplyPreviewMaterial(currentPreview);
             currentRotation = 0f;
 
             Debug.Log($"<color=#ff00ff>[BuildPlacer.cs] 開始建造：<color=#00ff00>{data.prefab.name}</color></color>");
@@ -227,14 +227,14 @@ namespace galaxy890624
             foreach (Transform c in t) SetLayerRecursively(c, layer);
         }
 
-        private void ApplyPreviewMaterial(GameObject obj)
+        /*private void ApplyPreviewMaterial(GameObject obj)
         {
             foreach (var renderer in obj.GetComponentsInChildren<Renderer>())
             {
                 // 使用 sharedMaterial 以避免產生大量 Material instance（視需求調整）
                 renderer.material = previewMaterial;
             }
-        }
+        }*/
 
         private void SetPreviewColor(Color color)
         {
