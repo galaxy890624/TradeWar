@@ -14,7 +14,7 @@ namespace galaxy890624
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("<color=#0f7fff><color=#ff00ff>[PlayerWalk.cs]</color> State -> <color=#ff7f00>PlayerWalk</color></color>");
+            //Debug.Log("<color=#0f7fff><color=#ff00ff>[PlayerWalk.cs]</color> State -> <color=#ff7f00>PlayerWalk</color></color>");
         }
 
         public override void Exit()

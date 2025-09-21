@@ -89,8 +89,8 @@ namespace galaxy890624
             StateMachine.DefaultState(PlayerIdle);
 
             // 遊戲一開始時測試用 : 可以控制
-            Debug.Log($"<color=#ff00ff>[Player.cs]CanMove = <color=#00ff00>{CanMove}</color></color>");
-            Debug.Log($"<color=#ff00ff>[Player.cs]CanJump = <color=#00ff00>{CanJump}</color></color>");
+            //Debug.Log($"<color=#ff00ff>[Player.cs]CanMove = <color=#00ff00>{CanMove}</color></color>");
+            //Debug.Log($"<color=#ff00ff>[Player.cs]CanJump = <color=#00ff00>{CanJump}</color></color>");
             TestCanControl();
 
             // 初始化的時候 就自動尋找節點

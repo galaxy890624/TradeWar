@@ -14,7 +14,7 @@ public class MaterialManager : MonoBehaviour
     {
         if (Materials.Length != BaseMaps.Length)
         {
-            print("<color=#ff00ff>材質數量和貼圖數量不匹配!</color>");
+            print("<color=#ff00ff>[MaterialManager.cs] 材質數量和貼圖數量不匹配!</color>");
             return;
         }
 
@@ -26,7 +26,7 @@ public class MaterialManager : MonoBehaviour
             }
             else
             {
-                print($"<color=#ff00ff>Material <color=#00ff00>{Materials[i].name}</color> 沒有 _BaseMap 屬性</color>");
+                print($"<color=#ff00ff>[MaterialManager.cs] Material <color=#00ff00>{Materials[i].name}</color> 沒有 _BaseMap 屬性</color>");
             }
         }
     }

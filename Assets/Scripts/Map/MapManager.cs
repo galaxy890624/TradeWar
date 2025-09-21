@@ -26,7 +26,7 @@ public class MapManager : MonoBehaviour
         // 已經有 MapTile 就跳過生成
         if (HasTiles())
         {
-            Debug.Log("<color=#ff00ff>[MapManager.cs] 已有地圖，跳過自動生成</color>");
+            //Debug.Log("<color=#ff00ff>[MapManager.cs] 已有地圖，跳過自動生成</color>");
             return;
         }
 
