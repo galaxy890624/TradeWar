@@ -71,33 +71,31 @@ namespace galaxy890624
         private void SetupAllButtons()
         {
             Button[] buttons = buttonContainer.GetComponentsInChildren<Button>(true);
-            Debug.Log($"<color=#ff00ff>[BuildingButtonManager.cs] 找到 <color=#00ff00>{buttons.Length}</color> 顆按鈕</color>");
+            Debug.Log($"<color=#ff00ff>[BuildingButtonManager.cs]</color> 找到 <color=#00ff00>{buttons.Length}</color> 顆按鈕");
 
             foreach (Button btn in buttons)
             {
-                // 用模糊比對：只要按鈕名稱包含 BuildingData.buildingID 就算對應成功
+                // 嘗試從名稱中提取建築關鍵字，例如 "ButtonPrefab_House_Lv1"
+                string buttonName = btn.name.Replace("ButtonPrefab_", "").Trim();
+
+                // 改進比對邏輯：支援精準 + 模糊兩種方式
                 BuildingData matchedData = allBuildingDataList.Find(data =>
-                    btn.name.Contains(data.buildingID) // 或改成 data.name, 依你 BuildingData 內容而定
+                    string.Equals(data.buildingID, buttonName, System.StringComparison.OrdinalIgnoreCase)
+                    || btn.name.Contains(data.buildingID)
                 );
 
                 if (matchedData != null)
                 {
-                    // 設定文字
-                    TMP_Text text = btn.GetComponentInChildren<TMP_Text>();
-                    if (text != null)
-                        text.text = matchedData.GetDisplayName();
+                    // 更新建築名稱文字（找子物件 "BuildingName"）
+                    TMP_Text text = btn.transform.Find("BuildingName")?.GetComponent<TMP_Text>();
+                    if (text != null) text.text = matchedData.GetDisplayName();
+                    // 更新建築圖示（找子物件 "BuildingImage"）
+                    Image icon = btn.transform.Find("BuildingImage")?.GetComponent<Image>();
+                    if (icon != null && matchedData.icon != null) icon.sprite = matchedData.icon;
 
-                    // 若按鈕裡面有圖示元件，就設定圖示
-                    Image icon = btn.GetComponentInChildren<Image>();
-                    if (icon != null && matchedData.icon != null)
-                        icon.sprite = matchedData.icon;
-
-                    // 綁定按鈕事件
+                    // 綁定按下事件
                     btn.onClick.RemoveAllListeners();
-                    btn.onClick.AddListener(() =>
-                    {
-                        OnBuildingButtonClick(matchedData);
-                    });
+                    btn.onClick.AddListener(() => OnBuildingButtonClick(matchedData));
 
                     Debug.Log($"<color=#ff00ff>[BuildingButtonManager.cs]</color> 綁定按鈕 <color=#00ff00>{btn.name}</color> → <color=#00ff00>{matchedData.displayName}</color>");
                 }
