@@ -6,96 +6,79 @@ using UnityEngine.UI;
 namespace galaxy890624
 {
     /// <summary>
-    /// 建築按鈕管理器 <br><br></br></br>
-    /// 
-    /// 功能： <br></br>
-    /// - 自動掃描指定的按鈕容器（Content）下所有 Button（包含 inactive）； <br></br>
-    /// - 使用按鈕名稱（預期格式：<c>ButtonPrefab_{BuildingData.name}</c>）來對應並綁定對應的 <see cref="BuildingData"/>; <br></br>
-    /// - 綁定按鈕上的文字為建築顯示名稱，並將按鈕點擊事件連結至 <see cref="BuildPlacer"/> 開始放置建築。 <br></br>
-    ///  <br></br>
-    /// 注意事項： <br></br>
-    /// - 需要在 Inspector 中指定 <see cref="buttonContainer"/> 與 <see cref="allBuildingDataList"/>; <br></br>
-    /// - 若找不到對應的 <see cref="BuildingData"/>，會在 Console 顯示 Warning； <br></br>
-    /// - 本類別不處理按鈕本身的可見/可點擊邏輯，只負責綁定資料與發送放置請求。 <br></br>
+    /// 建築按鈕管理器
+    /// - 掃描 Content 下所有 Button（包含 inactive）
+    /// - 依名稱自動綁定 BuildingData
+    /// - 綁定顯示名稱、圖示、點擊事件
     /// </summary>
     public class BuildingButtonManager : MonoBehaviour
     {
         [Header("按鈕容器 (Content)")]
-        /// <summary>
-        /// 包含所有按鈕的容器（通常是 ScrollView 的 Content）。會對容器內所有子物件做 <see cref="GetComponentsInChildren{T}"/> 掃描（包含 inactive）。
-        /// </summary>
+        [Tooltip("包含所有按鈕的容器（通常是 ScrollView 的 Content）")]
         [SerializeField] private Transform buttonContainer;
 
         [Header("所有建築資料來源")]
-        /// <summary>
-        /// 編輯器指定的所有建築資料清單。用來建立名稱到 <see cref="BuildingData"/> 的查詢表。
-        /// 每筆 <see cref="BuildingData"/> 的 <c>name</c> 欄位會被當作 key 使用（例如 "House_Lv1"）。
-        /// </summary>
+        [Tooltip("包含所有可建造建築的 BuildingData")]
         [SerializeField] public List<BuildingData> allBuildingDataList = new List<BuildingData>();
 
-        /// <summary>
-        /// 以建築資源名稱為 key 的查詢表（由 <see cref="Awake"/> 建立）。
-        /// key 應對應 <see cref="BuildingData.name"/>（例如 "House_Lv1"）。
-        /// </summary>
-        private Dictionary<string, BuildingData> buildingLookup;
+        [Header("建造控制器 (BuildPlacer)")]
+        [Tooltip("若不指定，會自動使用 BuildPlacer.Instance")]
+        [SerializeField] private BuildPlacer buildPlacer;
 
         private void Awake()
         {
             if (buttonContainer == null)
             {
-                Debug.LogError("<color=#ff00ff>[BuildingButtonManager.cs] 沒有指定 buttonContainer！</color>");
+                Debug.LogError("<color=#ff00ff>[BuildingButtonManager.cs]</color> 沒有指定 buttonContainer！");
                 return;
             }
 
-            // 建立查找表
-            buildingLookup = new Dictionary<string, BuildingData>();
-            foreach (var data in allBuildingDataList)
-            {
-                if (data == null) continue;
-                // 以 BuildingData 的名稱作為 key，例如 "House_Lv1"
-                buildingLookup[data.name] = data;
-            }
+            if (buildPlacer == null) buildPlacer = BuildPlacer.Instance;
 
-            // 掃描所有按鈕
             SetupAllButtons();
         }
 
         /// <summary>
-        /// 掃描 Content 內的所有按鈕，根據按鈕名稱自動綁定對應的 <see cref="BuildingData"/>。
+        /// 掃描 Content 內所有按鈕並綁定
         /// </summary>
-        /// <remarks>
-        /// - 預期按鈕命名規則：<c>"ButtonPrefab_{BuildingData.name}"</c>。方法會把前綴 <c>"ButtonPrefab_"</c> 移除後再查表。
-        /// - 若按鈕內有 <see cref="TMP_Text"/>，會將其文字改為 <see cref="BuildingData.GetDisplayName"/> 的回傳值。
-        /// - 會先移除所有已有 listeners，確保只綁定此處建立的 callback。
-        /// </remarks>
         private void SetupAllButtons()
         {
+            if (buttonContainer == null)
+            {
+                Debug.LogError("<color=#ff00ff>[BuildingButtonManager.cs] Button Container 未設定！</color>");
+                return;
+            }
+
             Button[] buttons = buttonContainer.GetComponentsInChildren<Button>(true);
             Debug.Log($"<color=#ff00ff>[BuildingButtonManager.cs]</color> 找到 <color=#00ff00>{buttons.Length}</color> 顆按鈕");
 
             foreach (Button btn in buttons)
             {
-                // 嘗試從名稱中提取建築關鍵字，例如 "ButtonPrefab_House_Lv1"
                 string buttonName = btn.name.Replace("ButtonPrefab_", "").Trim();
 
-                // 改進比對邏輯：支援精準 + 模糊兩種方式
+                // 支援精準與模糊比對
                 BuildingData matchedData = allBuildingDataList.Find(data =>
-                    string.Equals(data.buildingID, buttonName, System.StringComparison.OrdinalIgnoreCase)
-                    || btn.name.Contains(data.buildingID)
+                    data != null &&
+                    (string.Equals(data.name, buttonName, System.StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(data.buildingID, buttonName, System.StringComparison.OrdinalIgnoreCase)
+                    || btn.name.Contains(data.name)
+                    || (!string.IsNullOrEmpty(data.buildingID) && btn.name.Contains(data.buildingID)))
                 );
 
                 if (matchedData != null)
                 {
-                    // 更新建築名稱文字（找子物件 "BuildingName"）
+                    // 設定顯示名稱
                     TMP_Text text = btn.transform.Find("BuildingName")?.GetComponent<TMP_Text>();
                     if (text != null) text.text = matchedData.GetDisplayName();
-                    // 更新建築圖示（找子物件 "BuildingImage"）
+
+                    // 設定圖示
                     Image icon = btn.transform.Find("BuildingImage")?.GetComponent<Image>();
                     if (icon != null && matchedData.icon != null) icon.sprite = matchedData.icon;
 
-                    // 綁定按下事件
+                    // 綁定按鈕事件
                     btn.onClick.RemoveAllListeners();
-                    btn.onClick.AddListener(() => OnBuildingButtonClick(matchedData));
+                    var capturedData = matchedData;
+                    btn.onClick.AddListener(() => OnBuildingButtonClick(capturedData));
 
                     Debug.Log($"<color=#ff00ff>[BuildingButtonManager.cs]</color> 綁定按鈕 <color=#00ff00>{btn.name}</color> → <color=#00ff00>{matchedData.displayName}</color>");
                 }
@@ -108,19 +91,22 @@ namespace galaxy890624
 
         /// <summary>
         /// 按下建築按鈕時的處理流程。
-        /// 會檢查 <see cref="BuildPlacer.Instance"/> 是否存在，存在則呼叫 <see cref="BuildPlacer.StartPlacing(BuildingData)"/> 開始放置流程。
+        /// 呼叫 BuildPlacer 進入建造模式。
         /// </summary>
-        /// <param name="data">要開始放置的建築資料。</param>
         private void OnBuildingButtonClick(BuildingData data)
         {
-            if (BuildPlacer.Instance == null)
+            if (buildPlacer == null)
             {
-                Debug.LogError("<color=#ff00ff>[BuildingButtonManager.cs] 找不到 <color=#ff00ff>BuildPlacer.Instance</color></color>");
+                Debug.LogError("<color=#ff00ff>[BuildingButtonManager.cs]</color> 找不到 BuildPlacer 實例！");
                 return;
             }
+            // 注意 : 有沒有其他透明 UI（如 Panel、Image）覆蓋在按鈕上方？這會攔截點擊。
+            // 可暫時隱藏所有 Panel/Image 測試。
+            Debug.Log($"<color=#ff00ff>[BuildingButtonManager.cs]</color> 點擊建造: <color=#00ff00>{data.name}</color>");
 
-            Debug.Log($"<color=#ff00ff>[BuildingButtonManager.cs] 點擊建造: <color=#00ff00>{data.name}</color></color>");
-            BuildPlacer.Instance.StartPlacing(data);
+            if (buildPlacer.buildingUIRoot != null && !buildPlacer.buildingUIRoot.activeSelf) buildPlacer.buildingUIRoot.SetActive(true);
+
+            buildPlacer.StartPlacing(data);
         }
     }
 }
