@@ -69,11 +69,11 @@ namespace galaxy890624
         {
             // 設定要放的建築資料
             currentData = data;
-            if (currentData == null)
+            /*if (currentData == null)
             {
                 Debug.LogWarning("<color=#ff00ff>[BuildPlacer.cs] StartPlacing 被呼叫但 data 為 null</color>");
                 return;
-            }
+            }*/
 
             // 切換相機到建造模式並顯示 UI
             SwitchCamera(true);
