@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b558df0bd0221241a1164f7151f3898, type: 3}
   m_Name: "\u4EA4\u6613\u6240Lv2"
   m_EditorClassIdentifier: 
+  buildingID: Market_Lv2
   category: 2
   level: 2
   displayName: "\u4EA4\u6613\u6240Lv2"

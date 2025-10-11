@@ -106,6 +106,9 @@ namespace galaxy890624
             // 快捷鍵：按 F7 開始測試建造（若沒有 preview 時）
             if (currentPreview == null && Input.GetKeyDown(KeyCode.F7))
             {
+                buildingUIRoot.GetComponent<CanvasGroup>().alpha = 1; // 顯示建造按鈕
+                buildingUIRoot.GetComponent<CanvasGroup>().interactable = true;
+                buildingUIRoot.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 StartPlacing(testData);
                 return;
             }
@@ -377,7 +380,7 @@ namespace galaxy890624
             // 若場景有 Camera.main，更新 mainCamera 參考（方便 Cinemachine 切換）
             if (Camera.main != null) mainCamera = Camera.main;
 
-            if (debugLogs) Debug.Log($"<color=#ff00ff>[BuildPlacer] SwitchCamera buildMode = <color=#00ff00>{buildMode}</color>");
+            if (debugLogs) Debug.Log($"<color=#ff00ff>[BuildPlacer] SwitchCamera buildMode = <color=#00ff00>{buildMode}</color></color>");
         }
     }
 }

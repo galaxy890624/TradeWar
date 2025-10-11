@@ -15,6 +15,10 @@ using UnityEngine.UI;
 
 public class BuildingData : ScriptableObject
 {
+    [Header("唯一識別名稱（用來對應按鈕）")]
+    [Tooltip("例如：House_Lv1、Market_Lv2、Lab_Lv1 ... 必須和按鈕名稱相對應")]
+    public string buildingID;
+
     [Header("建築分類與等級")]
     public BuildingCategory category;
     public int level;
