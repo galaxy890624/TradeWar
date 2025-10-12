@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2404607876740594911}
   - component: {fileID: 3037316096587682109}
   - component: {fileID: 8560411903306643769}
+  - component: {fileID: 4492387588049598063}
   m_Layer: 7
   m_Name: fir tree small
   m_TagString: Untagged
@@ -120,3 +121,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 9140876672667042287, guid: 9e1b8c0463d5346408715728b07773ce, type: 3}
   PlayerData: {fileID: 11400000, guid: 38b29bfe433c0e84db2860737077e192, type: 2}
+  GetAward: {fileID: 11400000, guid: 6d0b15daa02124d40957e09210b5da3b, type: 2}
+--- !u!54 &4492387588049598063
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205832566711065866}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1

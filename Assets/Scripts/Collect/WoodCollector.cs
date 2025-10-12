@@ -15,15 +15,16 @@ namespace galaxy890624
     {
         [SerializeField, Header("玩家物件")] private GameObject Player;
         [SerializeField, Header("玩家資料")] private PlayerData PlayerData;
+        [SerializeField, Header("GetAward的ScriptableObj")] private GetAward GetAward;
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision other)
         {
-            if (collision.gameObject == Player)
+            if (other.gameObject.name == "Player")
             {
-                // 玩家獲得木頭數量 +1
-                PlayerData.Wood++;
+                // 玩家獲得木頭的對應數量
+                PlayerData.Wood += GetAward.GetWood;
                 // 木頭消失
-                Destroy(gameObject);
+                Destroy(this.gameObject);
             }
         }
     }
