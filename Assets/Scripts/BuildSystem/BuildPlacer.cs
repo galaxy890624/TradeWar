@@ -211,7 +211,7 @@ namespace galaxy890624
         // ---------- 結束建造模式並清理 ----------
         private void EndPlacing()
         {
-            if (currentPreview != null) Destroy(currentPreview); // 刪掉預覽物件
+            //if (currentPreview != null) Destroy(currentPreview); // 刪掉預覽物件
             currentPreview = null;
             currentData = null;
             currentRotation = 0f;

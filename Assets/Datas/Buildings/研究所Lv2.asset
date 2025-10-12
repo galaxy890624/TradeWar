@@ -22,5 +22,5 @@ MonoBehaviour:
   costMoney: 0
   costWood: 0
   costGold: 0
-  width: 3
-  height: 5
+  width: 5
+  height: 3
