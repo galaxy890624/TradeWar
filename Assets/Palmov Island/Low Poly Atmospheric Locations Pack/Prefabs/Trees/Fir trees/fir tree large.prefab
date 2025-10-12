@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1502914969878289007}
   - component: {fileID: 3692840068799966885}
   - component: {fileID: 2299194448230806841}
+  - component: {fileID: 3319024589366067633}
   m_Layer: 7
   m_Name: fir tree large
   m_TagString: Untagged
@@ -105,3 +106,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.4659257, y: 8.301302, z: 4.309767}
   m_Center: {x: -0.031661987, y: 4.150651, z: 0.10183895}
+--- !u!114 &3319024589366067633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2900148878580453232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97bc37d14b47c543a0a0acb7365c295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 9140876672667042287, guid: 9e1b8c0463d5346408715728b07773ce, type: 3}
+  PlayerData: {fileID: 11400000, guid: 38b29bfe433c0e84db2860737077e192, type: 2}
