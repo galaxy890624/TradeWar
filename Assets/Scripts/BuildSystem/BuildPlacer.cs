@@ -36,6 +36,7 @@ namespace galaxy890624
         public bool debugLogs = false;                              // 控制是否印詳細 Log（避免大量輸出）
 
         // ---------- 私有欄位（內部狀態） ----------
+        private PlayerData playerData;                              // 玩家資料（可選）
         private GameObject currentPreview;                          // 當前的預覽物件（玩家還沒放的那個）
         private BuildingData currentData;                           // 當前在放置的建築資料
         private float currentRotation;                              // 當前預覽的 Y 軸旋轉（度數）
@@ -218,6 +219,15 @@ namespace galaxy890624
             ResetHighlightedTiles();
             SwitchCamera(false); // 還原相機與 UI
             if (debugLogs) Debug.Log("<color=#ff00ff>[BuildPlacer.cs] EndPlacing 執行，回到遊戲模式</color>");
+            // 如果玩家資源足夠，結束建造模式的時候才可以放置建築
+            if (playerData.Wood >= currentData.costWood)
+            {
+
+            }
+            else
+            {
+                Destroy(currentPreview);
+            }
         }
 
         // ---------- 正式建造（建立實體建築） ----------

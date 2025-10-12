@@ -20,7 +20,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 32a910569006e6f4288aeb55d4088d8b, type: 3}
   nextLevelData: {fileID: 11400000, guid: a8bbcbf370f05f143b1e17fe663bb0a4, type: 2}
   costMoney: 0
-  costWood: 0
+  costWood: 1
   costGold: 0
   width: 3
   height: 3

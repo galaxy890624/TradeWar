@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb8b585ee9b2a544889bbdeab8134a4, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  Level: 0
+  Exp: 0
   Money: 0
   Gold: 0
   Wood: 0
