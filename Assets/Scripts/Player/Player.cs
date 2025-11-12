@@ -114,7 +114,7 @@ namespace galaxy890624
         /// <param name="Velocity">剛體的速度<br></br></param>
         public void SetVelocity(Vector3 Velocity)
         {
-            Rigidbody.velocity = Velocity;
+            Rigidbody.linearVelocity = Velocity;
             //Debug.Log($"<color=#ff00ff>Rigidbody.velocity = <color=#00ff00>{Velocity}</color></color>");
         }
 

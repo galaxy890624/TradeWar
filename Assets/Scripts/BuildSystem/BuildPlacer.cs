@@ -255,17 +255,13 @@ namespace galaxy890624
         {
             List<MapTile> result = new List<MapTile>();
 
-            // 注意：若地圖格子很多，FindObjectsOfType 會較慢；此處簡單直接
-            foreach (MapTile tile in FindObjectsOfType<MapTile>())
+            // Use the new method with no sorting for better performance
+            foreach (MapTile tile in Object.FindObjectsByType<MapTile>(FindObjectsSortMode.None))
             {
-                if (tile.row >= startRow && tile.row < startRow + height &&
-                    tile.col >= startCol && tile.col < startCol + width)
-                {
-                    result.Add(tile);
-                }
+                if (tile.row >= startRow && tile.row < startRow + height && tile.col >= startCol && tile.col < startCol + width) result.Add(tile);
             }
 
-            // 排序成由上（row）到左（col）順序，方便閱讀或後續處理
+            // Sorting is optional, depending on your use case
             result.Sort((a, b) =>
             {
                 int r = a.row.CompareTo(b.row);

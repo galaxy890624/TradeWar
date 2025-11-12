@@ -27,7 +27,7 @@ namespace galaxy890624
             base.Update();
 
             // 在空中可以移動
-            Player.SetVelocity(new Vector3(HorizontalInput * Player.MoveSpeed, Player.Rigidbody.velocity.y, VerticalInput * Player.MoveSpeed)); // 設定玩家的水平速度
+            Player.SetVelocity(new Vector3(HorizontalInput * Player.MoveSpeed, Player.Rigidbody.linearVelocity.y, VerticalInput * Player.MoveSpeed)); // 設定玩家的水平速度
 
             // 如果 碰到地板, 就切換到待機狀態
             if (Player.IsGrounded())

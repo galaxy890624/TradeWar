@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using galaxy890624;
 
 namespace galaxy890624
 {
@@ -19,7 +18,7 @@ namespace galaxy890624
         /// </summary>
         public void Save()
         {
-            var allBuildings = FindObjectsOfType<Building>();
+            var allBuildings = Object.FindObjectsByType<Building>(FindObjectsSortMode.None);
             SaveData save = new();
 
             foreach (var b in allBuildings)
@@ -55,12 +54,12 @@ namespace galaxy890624
             string json = File.ReadAllText(FullPath);
             SaveData save = JsonUtility.FromJson<SaveData>(json);
 
-            foreach (var b in FindObjectsOfType<Building>())
+            foreach (var b in Object.FindObjectsByType<Building>(FindObjectsSortMode.None))
             {
                 Destroy(b.gameObject);
             }
 
-            foreach (var tile in FindObjectsOfType<MapTile>())
+            foreach (var tile in Object.FindObjectsByType<MapTile>(FindObjectsSortMode.None))
             {
                 tile.IsOccupied = false;
                 tile.CurrentBuilding = null;
@@ -83,7 +82,7 @@ namespace galaxy890624
         {
             List<MapTile> list = new();
 
-            foreach (var tile in FindObjectsOfType<MapTile>())
+            foreach (var tile in Object.FindObjectsByType<MapTile>(FindObjectsSortMode.None))
             {
                 if (tile.row >= startRow && tile.row < startRow + h &&
                     tile.col >= startCol && tile.col < startCol + w)

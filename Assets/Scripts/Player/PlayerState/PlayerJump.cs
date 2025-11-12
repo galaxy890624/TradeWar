@@ -15,7 +15,7 @@ namespace galaxy890624
         {
             base.Enter();
             //Debug.Log("<color=#0f7fff><color=#ff00ff>[PlayerJump.cs] </color>State -> <color=#ff7f00>PlayerJump</color></color>");
-            Player.SetVelocity(Player.Rigidbody.velocity + new Vector3(0f, Player.JumpForce, 0f)); // 設定玩家的跳躍速度
+            Player.SetVelocity(Player.Rigidbody.linearVelocity + new Vector3(0f, Player.JumpForce, 0f)); // 設定玩家的跳躍速度
             Player.Animator.SetBool("IsGrounded", false);
             Player.Animator.SetFloat("Gravity", 1f);
         }
@@ -30,13 +30,13 @@ namespace galaxy890624
             base.Update();
 
             // 在空中可以移動
-            Player.SetVelocity(new Vector3(HorizontalInput * Player.MoveSpeed, Player.Rigidbody.velocity.y, VerticalInput * Player.MoveSpeed)); // 設定玩家的水平速度
+            Player.SetVelocity(new Vector3(HorizontalInput * Player.MoveSpeed, Player.Rigidbody.linearVelocity.y, VerticalInput * Player.MoveSpeed)); // 設定玩家的水平速度
             Player.Animator.SetFloat("HorizontalDirection", HorizontalInput);
             Player.Animator.SetFloat("VerticalDirection", VerticalInput);
 
             // PlayerJump -> PlayerFall
             // 如果 剛體的速度小於等於0, 就切換到落下狀態
-            if (Player.Rigidbody.velocity.y <= 0f) StateMachine.SwitchState(Player.PlayerFall);
+            if (Player.Rigidbody.linearVelocity.y <= 0f) StateMachine.SwitchState(Player.PlayerFall);
         }
     }
 }
