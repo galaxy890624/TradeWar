@@ -1,0 +1,4 @@
+repository "TradeWar/TradeWar@18966966709668@cloud"
+  path "/"
+    br "/main"
+    co "/main"

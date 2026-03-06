@@ -925,7 +925,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -947,10 +953,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: b2a1c7be-41d2-4f38-8bab-a9a8da0dae96
+  cloudProjectId: c5164f3b-ecc9-4b18-a4c1-9ea6c85614c5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: TradeWar 2025-11-04_09-19-14
+  projectName: TradeWar
   organizationId: galaxy890624
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

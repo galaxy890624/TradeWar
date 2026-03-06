@@ -15,6 +15,14 @@ public class Building : MonoBehaviour
     // 被佔用的所有格子
     private MapTile[] occupiedTiles;
 
+    public bool Placed { get; private set; }
+
+    /// <summary>
+    /// 建築佔用區域 (以格子為單位)<br></br>
+    /// 只填x,z
+    /// </summary>
+    public BoundsInt Area;
+
     /// <summary>
     /// 初始化建築與佔用格子
     /// </summary>
