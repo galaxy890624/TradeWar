@@ -32,6 +32,7 @@ public class GridData
                 returnVal.Add(GridPosition + new Vector3Int(x, 0, y));
             }
         }
+        // Debug.Log($"<color=#ff00ff>[GridData.cs] returnVal = <color=#00ff00>{returnVal}</color></color>");
         return returnVal;
     }
 

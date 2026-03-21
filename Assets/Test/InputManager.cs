@@ -6,12 +6,11 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] private Camera SceneCamera;
+    [SerializeField, Header("遊戲的攝影機")] private Camera SceneCamera;
 
     private Vector3 LastPosition;
 
-    [SerializeField]
-    private LayerMask PlacementLayermask;
+    [SerializeField] private LayerMask PlacementLayermask;
 
     public event Action OnClicked, OnExit;
 

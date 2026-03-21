@@ -11,15 +11,18 @@ public class PlacementSystem : MonoBehaviour
     [SerializeField] private InputManager InputManager;
     [SerializeField] private Grid Grid;
 
+    /// <summary>
+    /// Database ScriptableObject
+    /// </summary>
     [SerializeField] private ObjectsDatabaseSO Database;
     private int SelectedObjectID = -1;
     
     /// <summary>
-    /// Plane
+    /// 3D Object - Plane
     /// </summary>
     [SerializeField] private GameObject GridVisualization;
 
-    // [SerializeField] AudioSource Audio;
+    //[SerializeField] AudioSource Audio;
 
     private GridData FloorData, BuildingData;
     private Renderer PreviewRenderer;
@@ -32,7 +35,11 @@ public class PlacementSystem : MonoBehaviour
         BuildingData = new();
         PreviewRenderer = CellIndicator.GetComponentInChildren<Renderer>(); // Hirearchy : CursorIndicatorParent/CursorIndicator
     }
-
+    /// <summary>
+    /// 開始放置物件<br></br>
+    /// 傳入物件ID，會在Update中顯示預覽圖，並在點擊地圖時放置物件
+    /// </summary>
+    /// <param name="ID">物件的ID</param>
     public void StartPlacement(int ID)
     {
         StopPlacement();
@@ -50,9 +57,10 @@ public class PlacementSystem : MonoBehaviour
 
     private void PlaceStructure()
     {
-        if(InputManager.IsPointerOverUI())
+        // 點擊UI時不放置物件
+        if (InputManager.IsPointerOverUI())
         {
-            Debug.Log($"<color=#ff00ff>[PlacementSystem.cs] IsPointerOverUI == <color=#00ff00>{InputManager.IsPointerOverUI()}</color></color>");
+            // Debug.Log($"<color=#ff00ff>[PlacementSystem.cs] IsPointerOverUI == <color=#00ff00>{InputManager.IsPointerOverUI()}</color></color>");
             return;
         }
 

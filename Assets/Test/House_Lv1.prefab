@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2124780861793072838}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.369, y: 0, z: 0.88}
+  m_LocalPosition: {x: 1.366, y: 0, z: 0.88}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -116,8 +116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 150768844189690741}
   - component: {fileID: 4751482336426784003}
-  - component: {fileID: 2426527401848476388}
-  - component: {fileID: 4041617782491901039}
   m_Layer: 0
   m_Name: House_Lv1
   m_TagString: Untagged
@@ -162,27 +160,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 0.833, z: 2}
   m_Center: {x: 0, y: 0.33, z: 0.126}
---- !u!114 &2426527401848476388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8034247017475433787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf9a603f7d349740bbdbe8ebbf80300, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlaceableObject
---- !u!114 &4041617782491901039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8034247017475433787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92fdeb4e56b10f44b93c02246a7378d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObjectDrag

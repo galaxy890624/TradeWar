@@ -116,8 +116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1847655109669478688}
   - component: {fileID: 3909287521388272849}
-  - component: {fileID: 7115184299028152190}
-  - component: {fileID: 5460462407100669963}
   m_Layer: 0
   m_Name: House_Lv2
   m_TagString: Untagged
@@ -162,27 +160,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8, y: 2, z: 1.4}
   m_Center: {x: 0.9, y: 1, z: 0.7}
---- !u!114 &7115184299028152190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9052352794529952978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf9a603f7d349740bbdbe8ebbf80300, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlaceableObject
---- !u!114 &5460462407100669963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9052352794529952978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92fdeb4e56b10f44b93c02246a7378d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObjectDrag
